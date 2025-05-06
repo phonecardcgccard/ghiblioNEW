@@ -1,6 +1,6 @@
-// 全站通用脚本
+// Common site-wide JS (modular, easy to expand)
 document.addEventListener("DOMContentLoaded", () => {
-  // 平滑滚动
+  // Smooth scroll for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// Loading 控制，可在后续API调用等处引用
+// Loading control, can be imported elsewhere if needed
 export function showLoading() {
   document.querySelector('.loading').style.display = 'flex';
 }
