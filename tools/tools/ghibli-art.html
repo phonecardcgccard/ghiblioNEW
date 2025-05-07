@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ghibli Art Generator - Ghiblio</title>
+  <meta name="description" content="Generate unique Ghibli-style artwork using AI. Describe your scene and let the magic begin!">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script type="module" src="../assets/js/ghibli-art.js"></script>
+</head>
+<body>
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="../gallery.html">Gallery</a>
+    <a href="../about.html">About</a>
+    <a href="../faq.html">FAQ</a>
+  </nav>
+  <header>
+    <h1>Ghibli Art Generator</h1>
+    <p>Describe a scene and let AI create a Ghibli-inspired masterpiece for you!</p>
+  </header>
+  <main>
+    <section>
+      <form id="ghibli-art-form" autocomplete="off">
+        <label for="prompt">Describe your scene:</label>
+        <textarea id="prompt" name="prompt" rows="4" maxlength="300" placeholder="E.g. A cat flying over a magical forest at sunset" required></textarea>
+        <button type="submit" class="btn">Generate Artwork</button>
+      </form>
+      <div id="result" style="display:none; margin-top:2rem;">
+        <h2>Your Ghibli-style Artwork:</h2>
+        <img id="generated-image" src="" alt="Ghibli AI Artwork" style="max-width:100%;border-radius:14px;box-shadow:0 2px 8px #8882;">
+        <div style="margin-top:1rem;">
+          <button id="download-btn" class="btn">Download</button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>© 2025 Ghiblio. All rights reserved.</p>
+  </footer>
+  <div class="loading" style="display:none;">Generating...</div>
+</body>
+</html>
