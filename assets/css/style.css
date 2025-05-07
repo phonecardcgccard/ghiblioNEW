@@ -40,6 +40,7 @@ nav {
   position: relative;
   z-index: 2;
   font-size: 1.09rem;
+  align-items: center;
 }
 
 nav a {
@@ -51,6 +52,28 @@ nav a {
 }
 nav a:hover {
   color: #ffb347;
+}
+
+.lang-switch {
+  margin-left: auto;
+  display: flex;
+  gap: 0.4rem;
+}
+.lang-btn {
+  background: transparent;
+  border: 1px solid #a5b4fc;
+  color: #fff;
+  border-radius: 12px;
+  font-size: 0.98rem;
+  padding: 0.2rem 0.8rem;
+  margin-left: 0.12rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.15s, color 0.15s;
+}
+.lang-btn.active, .lang-btn:hover {
+  background: #a5b4fc;
+  color: #2c3550;
 }
 
 header {
@@ -171,6 +194,34 @@ main {
   transform: scale(1.06);
   box-shadow: 0 7px 32px #a5b4fc66;
 }
+
+/* Gallery modal preview */
+.img-modal {
+  position: fixed;
+  left: 0; top: 0; width: 100vw; height: 100vh;
+  z-index: 1000; display: flex; align-items: center; justify-content: center;
+  animation: fadeIn 0.2s;
+}
+.img-modal-bg {
+  position: absolute; left: 0; top: 0; width: 100vw; height: 100vh;
+  background: rgba(44,52,70,0.82);
+  backdrop-filter: blur(2px);
+}
+.img-modal-img {
+  max-width: 90vw; max-height: 80vh;
+  border-radius: 16px; box-shadow: 0 8px 40px #444a;
+  position: relative; z-index: 1;
+  background: #f8fafb;
+}
+.img-modal-close {
+  position: absolute; right: 4vw; top: 4vh;
+  color: #fff; font-size: 2.8rem; font-weight: bold;
+  z-index: 2; cursor: pointer;
+  text-shadow: 0 2px 8px #222c;
+  transition: color 0.18s;
+}
+.img-modal-close:hover { color: #ffb347; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
 /* Prompt Suggestions */
 #prompts {
