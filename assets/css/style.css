@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap');
+
 body {
   font-family: 'Poppins', Arial, sans-serif;
   margin: 0;
@@ -6,17 +8,17 @@ body {
   min-height: 100vh;
 }
 
-/* 可选：去掉或极低遮罩，背景极通透 */
+/* 极低遮罩，背景极通透 */
 body::before {
   content: '';
   position: fixed;
   z-index: 0;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(255,255,255,0.03); /* 极低遮罩透明度，近乎无 */
+  background: rgba(255,255,255,0.03);
   pointer-events: none;
 }
 
-/* 内容区毛玻璃效果 */
+/* 内容区毛玻璃与半透明 */
 header, main, footer, .tool-card {
   position: relative;
   z-index: 1;
@@ -30,7 +32,6 @@ header, main, footer, .tool-card {
   max-width: 720px;
 }
 
-/* 让卡片更小巧 */
 .tool-card {
   width: 300px;
   margin: 1.5rem;
