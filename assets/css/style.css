@@ -6,100 +6,128 @@ body {
   min-height: 100vh;
 }
 
+/* 可选：去掉或极低遮罩，背景极通透 */
 body::before {
   content: '';
   position: fixed;
   z-index: 0;
   top: 0; left: 0; right: 0; bottom: 0;
-  /* 更通透的白色遮罩，背景图片更鲜明 */
-  background: linear-gradient(0deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.08) 45%, rgba(255,255,255,0.03) 100%);
+  background: rgba(255,255,255,0.03); /* 极低遮罩透明度，近乎无 */
   pointer-events: none;
 }
 
-nav, main, footer, header {
+/* 内容区毛玻璃效果 */
+header, main, footer, .tool-card {
   position: relative;
   z-index: 1;
+  background: rgba(255,255,255,0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 22px;
+  box-shadow: 0 6px 24px 0 #b4cbe966;
+  margin: 2.5rem auto;
+  padding: 2.5rem 2rem 2rem 2rem;
+  max-width: 720px;
+}
+
+/* 让卡片更小巧 */
+.tool-card {
+  width: 300px;
+  margin: 1.5rem;
+  display: inline-block;
+  vertical-align: top;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 4px 28px rgba(0,0,0,0.13);
 }
 
 nav {
-  background: rgba(46,58,89,0.95);
-  padding: 1rem;
+  background: rgba(46,58,89,0.80);
+  padding: 1.3rem 2rem;
   color: #fff;
   display: flex;
   gap: 2rem;
+  border-radius: 18px;
+  box-shadow: 0 2px 12px #8ba1c8aa;
+  max-width: 720px;
+  margin: 2rem auto 0 auto;
 }
 
 nav a {
   color: #fff;
   text-decoration: none;
   font-weight: bold;
+  letter-spacing: 0.5px;
+  font-size: 1.08rem;
+  transition: color 0.2s;
+}
+
+nav a:hover {
+  color: #ffb347;
 }
 
 header {
   text-align: center;
-  margin: 3rem 0 1.5rem;
-  background: rgba(255,255,255,0.75);
-  border-radius: 16px;
-  padding: 2rem 1rem 1rem 1rem;
-  box-shadow: 0 6px 18px 0 #b4cbe933;
-  max-width: 660px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 3rem auto 1.5rem auto;
 }
 
 #tools {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 2rem;
-  margin: 2rem auto;
-  max-width: 900px;
+  margin: 3rem auto;
+  max-width: 980px;
   position: relative;
   z-index: 1;
-}
-
-.tool-card {
-  background: rgba(255,255,255,0.92);
-  border-radius: 14px;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.09);
-  padding: 2rem 1.5rem;
-  width: 270px;
-  text-align: center;
+  background: none;
+  box-shadow: none;
+  padding: 0;
 }
 
 .tool-card h2 {
-  margin-bottom: 0.5rem;
-  color: #4b7bec;
+  margin-bottom: 0.6rem;
+  color: #5c8df6;
+  font-size: 1.4rem;
 }
 
 .btn {
   display: inline-block;
-  background: linear-gradient(90deg, #4b7bec, #a5b4fc);
+  background: linear-gradient(90deg, #5c8df6, #a5b4fc);
   color: #fff;
-  padding: 0.6rem 1.3rem;
+  padding: 0.7rem 1.5rem;
   border: none;
   border-radius: 30px;
   margin-top: 1rem;
   text-decoration: none;
   font-weight: 600;
-  transition: box-shadow 0.2s, transform 0.2s;
+  font-size: 1.02rem;
+  letter-spacing: 0.2px;
+  transition: box-shadow 0.19s, transform 0.19s, background 0.19s;
+  box-shadow: 0 2px 12px #a5b4fc44;
 }
 
 .btn:hover {
-  box-shadow: 0 4px 12px #a5b4fc44;
-  transform: translateY(-2px);
+  background: linear-gradient(90deg, #a5b4fc, #5c8df6);
+  box-shadow: 0 4px 18px #a5b4fc66;
+  transform: translateY(-2px) scale(1.04);
 }
 
 footer {
   text-align: center;
-  margin: 3rem 0 1rem;
   color: #666;
-  font-size: 0.98rem;
-  background: rgba(255,255,255,0.7);
-  border-radius: 10px;
-  padding: 1rem 0;
-  max-width: 580px;
-  margin-left: auto;
-  margin-right: auto;
+  font-size: 1rem;
+  margin: 2.5rem auto 1.5rem auto;
+  background: rgba(255,255,255,0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+  box-shadow: 0 2px 12px #b4cbe933;
+  max-width: 540px;
+  padding: 1.4rem 0;
 }
 
 .loading {
