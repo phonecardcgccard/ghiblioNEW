@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>Ghibli-style AI Generator</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/style.min.css" />
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -17,8 +17,8 @@
     <a href="#gallery">Gallery</a>
     <a href="#prompts">Prompt Suggestions</a>
     <div class="lang-switch">
-      <button id="lang-en" class="lang-btn active">EN</button>
-      <button id="lang-zh" class="lang-btn">中文</button>
+      <button id="lang-en" class="lang-btn active" aria-label="English">EN</button>
+      <button id="lang-zh" class="lang-btn" aria-label="中文">中文</button>
     </div>
   </nav>
 
@@ -33,23 +33,37 @@
         <h2 data-i18n="generatorTitle">Generator</h2>
         <p data-i18n="generatorHint">Enter your ideas to generate unique Ghibli-style images!</p>
         <form id="prompt-form">
-          <input type="text" id="prompt-input" placeholder="Enter your prompt..." style="width: 65%; padding: 0.6rem; border-radius: 18px; border: 1px solid #d0d7e2; font-size: 1rem;" />
-          <button class="btn" type="submit" data-i18n="generateBtn">Generate</button>
+          <input type="text" id="prompt-input" placeholder="Enter your prompt..." style="width: 65%; padding: 0.6rem; border-radius: 18px; border: 1px solid #d0d7e2; font-size: 1rem;" aria-label="Prompt" />
+          <button class="btn" type="submit" data-i18n="generateBtn" aria-label="Generate">Generate</button>
         </form>
+        <div id="generate-loading" style="display:none;">Generating...</div>
+        <div id="generate-error" style="display:none;color:red;"></div>
+        <div id="result-image-wrap" style="display:none;">
+          <img id="result-image" style="max-width:340px;border-radius:14px;" alt="AI生成图片"/>
+          <div style="margin-top:8px;">
+            <button id="regenerate-btn" style="display:none;">重新生成</button>
+            <button id="save-image-btn" style="display:none;">保存图片</button>
+          </div>
+        </div>
+        <div class="ai-disclaimer" style="font-size:0.96rem;color:#888;margin-top:0.6rem;">
+          <span data-i18n="disclaimer">
+            Disclaimer: This project is for learning and sharing only. Images belong to their original creators.
+          </span>
+        </div>
       </div>
     </section>
 
     <section id="gallery">
       <h2 data-i18n="galleryTitle">Gallery</h2>
       <div class="gallery-grid">
-        <img src="assets/img/gallery1.jpg" alt="Ghibli Gallery 1">
-        <img src="assets/img/gallery2.jpg" alt="Ghibli Gallery 2">
-        <img src="assets/img/gallery3.jpg" alt="Ghibli Gallery 3">
-        <img src="assets/img/gallery4.jpg" alt="Ghibli Gallery 4">
-        <img src="assets/img/gallery5.jpg" alt="Ghibli Gallery 5">
-        <img src="assets/img/gallery6.jpg" alt="Ghibli Gallery 6">
-        <img src="assets/img/gallery7.jpg" alt="Ghibli Gallery 7">
-        <img src="assets/img/gallery8.jpg" alt="Ghibli Gallery 8">
+        <img src="assets/img/gallery1.jpg" alt="Ghibli风格：森林精灵晨雾插画">
+        <img src="assets/img/gallery2.jpg" alt="吉卜力风格：天空之城飞行机器人">
+        <img src="assets/img/gallery3.jpg" alt="夜晚小镇与猫，动漫场景">
+        <img src="assets/img/gallery4.jpg" alt="神秘山谷与飞龙插画">
+        <img src="assets/img/gallery5.jpg" alt="治愈系少女风中白裙">
+        <img src="assets/img/gallery6.jpg" alt="复古火车穿越金色麦田">
+        <img src="assets/img/gallery7.jpg" alt="湖畔村庄的日落风景">
+        <img src="assets/img/gallery8.jpg" alt="樱花树下的情侣动漫插画">
       </div>
     </section>
 
@@ -58,35 +72,35 @@
       <div class="prompts-list">
         <div class="prompt-card">
           <span class="prompt-text" data-i18n="prompt1">A misty morning in a fairytale forest, with wandering spirits</span>
-          <button class="copy-btn" data-i18n="copyBtn" onclick="copyPrompt(this)">Copy</button>
+          <button class="copy-btn" data-i18n="copyBtn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
         </div>
         <div class="prompt-card">
           <span class="prompt-text" data-i18n="prompt2">Ghibli-style sky castle with flying robots</span>
-          <button class="copy-btn" data-i18n="copyBtn" onclick="copyPrompt(this)">Copy</button>
+          <button class="copy-btn" data-i18n="copyBtn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
         </div>
         <div class="prompt-card">
           <span class="prompt-text" data-i18n="prompt3">A small town at night, warm lights and cats on the street</span>
-          <button class="copy-btn" data-i18n="copyBtn" onclick="copyPrompt(this)">Copy</button>
+          <button class="copy-btn" data-i18n="copyBtn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
         </div>
         <div class="prompt-card">
           <span class="prompt-text" data-i18n="prompt4">A mysterious valley with waterfalls and flying dragons</span>
-          <button class="copy-btn" data-i18n="copyBtn" onclick="copyPrompt(this)">Copy</button>
+          <button class="copy-btn" data-i18n="copyBtn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
         </div>
         <div class="prompt-card">
           <span class="prompt-text" data-i18n="prompt5">A healing girl with short hair in the wind, wearing a white dress</span>
-          <button class="copy-btn" data-i18n="copyBtn" onclick="copyPrompt(this)">Copy</button>
+          <button class="copy-btn" data-i18n="copyBtn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
         </div>
         <div class="prompt-card">
           <span class="prompt-text" data-i18n="prompt6">An old-fashioned train crossing a golden wheat field, anime scenery</span>
-          <button class="copy-btn" data-i18n="copyBtn" onclick="copyPrompt(this)">Copy</button>
+          <button class="copy-btn" data-i18n="copyBtn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
         </div>
         <div class="prompt-card">
           <span class="prompt-text" data-i18n="prompt7">A peaceful lakeside village at sunset, Ghibli style, soft colors, magical atmosphere, anime landscape</span>
-          <button class="copy-btn" data-i18n="copyBtn" onclick="copyPrompt(this)">Copy</button>
+          <button class="copy-btn" data-i18n="copyBtn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
         </div>
         <div class="prompt-card">
           <span class="prompt-text" data-i18n="prompt8">A Ghibli-style scene of a young couple holding hands under cherry blossom trees, gentle breeze, warm sunlight, anime illustration</span>
-          <button class="copy-btn" data-i18n="copyBtn" onclick="copyPrompt(this)">Copy</button>
+          <button class="copy-btn" data-i18n="copyBtn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
         </div>
       </div>
     </section>
@@ -103,7 +117,7 @@
       <span data-i18n="footerContact">Contact: phonecardcgccard</span>
     </div>
   </footer>
-
+  <script src="assets/js/i18n.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>
