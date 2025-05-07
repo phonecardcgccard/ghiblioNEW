@@ -1,12 +1,27 @@
 body {
   font-family: 'Poppins', Arial, sans-serif;
-  background: #f9f7f0;
   margin: 0;
   color: #222;
+  background: url('../assets/img/ghibli-bg.jpg') center center/cover no-repeat fixed;
+  min-height: 100vh;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  z-index: 0;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(0deg, rgba(255,255,255,0.93) 0%, rgba(255,255,255,0.90) 45%, rgba(255,255,255,0.65) 100%);
+  pointer-events: none;
+}
+
+nav, main, footer, header {
+  position: relative;
+  z-index: 1;
 }
 
 nav {
-  background: #2e3a59;
+  background: rgba(46,58,89,0.95);
   padding: 1rem;
   color: #fff;
   display: flex;
@@ -21,7 +36,14 @@ nav a {
 
 header {
   text-align: center;
-  margin: 2rem 0 1rem;
+  margin: 3rem 0 1.5rem;
+  background: rgba(255,255,255,0.75);
+  border-radius: 16px;
+  padding: 2rem 1rem 1rem 1rem;
+  box-shadow: 0 6px 18px 0 #b4cbe933;
+  max-width: 660px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #tools {
@@ -30,10 +52,12 @@ header {
   gap: 2rem;
   margin: 2rem auto;
   max-width: 900px;
+  position: relative;
+  z-index: 1;
 }
 
 .tool-card {
-  background: #fff;
+  background: rgba(255,255,255,0.92);
   border-radius: 14px;
   box-shadow: 0 4px 18px rgba(0,0,0,0.09);
   padding: 2rem 1.5rem;
@@ -69,6 +93,12 @@ footer {
   margin: 3rem 0 1rem;
   color: #666;
   font-size: 0.98rem;
+  background: rgba(255,255,255,0.7);
+  border-radius: 10px;
+  padding: 1rem 0;
+  max-width: 580px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .loading {
@@ -79,5 +109,5 @@ footer {
   align-items: center;
   justify-content: center;
   font-size: 1.3rem;
-  z-index: 999;
+  z-index: 9999;
 }
