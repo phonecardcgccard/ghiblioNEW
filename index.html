@@ -6,6 +6,164 @@
   <title>Ghibli-style AI Generator</title>
   <link rel="stylesheet" href="assets/css/style.min.css" />
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap" rel="stylesheet">
+  <style>
+    /* --- 加大 Generator 区域 --- */
+    #generator {
+      display: flex;
+      justify-content: center;
+      margin: 2.5rem 0 2.2rem 0;
+    }
+    .tool-card.generator-main {
+      width: 540px;
+      max-width: 99vw;
+      min-height: 420px;
+      padding: 2.8rem 2.6rem 2.2rem 2.6rem;
+      font-size: 1.13rem;
+    }
+    @media (max-width: 600px) {
+      .tool-card.generator-main {
+        width: 98vw;
+        padding: 1.2rem 0.6rem;
+        min-height: unset;
+      }
+    }
+
+    /* --- Gallery 区域加大 --- */
+    #gallery {
+      margin: 3.5rem auto 2.5rem auto;
+      max-width: 1160px;
+    }
+    #gallery h2 {
+      text-align: center;
+      margin-bottom: 1.6rem;
+      font-size: 1.48rem;
+      color: #3b546f;
+      letter-spacing: 0.8px;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2.2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    .gallery-grid img {
+      width: 100%;
+      height: 212px;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 4px 24px 0 #a8b9d055;
+      transition: transform 0.18s, box-shadow 0.18s;
+      background: #e9eef5;
+      cursor: pointer;
+    }
+    @media (max-width: 900px) {
+      .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1rem;
+      }
+      .gallery-grid img { height: 126px; }
+    }
+    @media (max-width: 600px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 0.7rem;
+      }
+      .gallery-grid img { height: 100px; }
+    }
+
+    /* --- Prompt Suggestions 左右两列排列 --- */
+    #prompts {
+      margin: 3.5rem auto 2.5rem auto;
+      max-width: 950px;
+    }
+    .prompts-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem 2.5rem;
+      justify-content: center;
+      align-items: start;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    @media (max-width: 720px) {
+      .prompts-list {
+        grid-template-columns: 1fr;
+        gap: 0.7rem;
+        padding: 0 0.2rem;
+      }
+    }
+    .prompt-card {
+      background: rgba(255,255,255,0.67);
+      border-radius: 14px;
+      box-shadow: 0 2px 10px #b4cbe922;
+      display: flex;
+      align-items: center;
+      padding: 0.7rem 1.2rem;
+      font-size: 1.13rem;
+      margin-bottom: 0.4rem;
+      min-height: 56px;
+      justify-content: space-between;
+    }
+    .prompt-text {
+      margin-right: 1.1rem;
+      color: #2b4778;
+      font-weight: 500;
+      letter-spacing: 0.6px;
+      flex: 1 1 auto;
+    }
+    .copy-btn {
+      background: linear-gradient(90deg, #5c8df6, #a5b4fc);
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      padding: 0.3rem 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.18s, box-shadow 0.15s;
+      font-size: 1.01rem;
+      box-shadow: 0 1px 6px #cbd9f066;
+      flex-shrink: 0;
+    }
+    .copy-btn:hover {
+      background: linear-gradient(90deg, #a5b4fc, #5c8df6);
+    }
+
+    /* --- 黑色页脚风格 --- */
+    footer {
+      background: #181a20;
+      color: #bbb;
+      text-align: center;
+      font-size: 1rem;
+      border-radius: 0;
+      box-shadow: none;
+      padding: 2.1rem 0 1.4rem 0;
+      margin: 3.3rem 0 0 0;
+      max-width: unset;
+      border-top: 1px solid #26292f;
+      letter-spacing: .2px;
+      transition: background .2s;
+    }
+    footer p, footer span {
+      color: #bbb;
+      margin: 0;
+    }
+    footer a {
+      color: #7db2ff;
+      text-decoration: none;
+      margin-left: .7em;
+      transition: color .18s;
+    }
+    footer a:hover, footer a:focus {
+      color: #4b7bec;
+    }
+    footer svg {
+      vertical-align: -3px;
+      transition: fill .18s;
+    }
+  </style>
 </head>
 <body>
   <div class="bg-wrap">
@@ -29,23 +187,23 @@
 
   <main>
     <section id="generator">
-      <div class="tool-card">
+      <div class="tool-card generator-main">
         <h2 data-i18n="generatorTitle">Generator</h2>
         <p data-i18n="generatorHint">Enter your ideas to generate unique Ghibli-style images!</p>
         <form id="prompt-form">
-          <input type="text" id="prompt-input" placeholder="Enter your prompt..." style="width: 65%; padding: 0.6rem; border-radius: 18px; border: 1px solid #d0d7e2; font-size: 1rem;" aria-label="Prompt" />
+          <input type="text" id="prompt-input" placeholder="Enter your prompt..." style="width: 65%; padding: 0.7rem; border-radius: 18px; border: 1px solid #d0d7e2; font-size: 1.06rem;" aria-label="Prompt">
           <button class="btn" type="submit" data-i18n="generateBtn" aria-label="Generate">Generate</button>
         </form>
         <div id="generate-loading" style="display:none;">Generating...</div>
         <div id="generate-error" style="display:none;color:red;"></div>
         <div id="result-image-wrap" style="display:none;">
-          <img id="result-image" style="max-width:340px;border-radius:14px;" alt="AI生成图片"/>
+          <img id="result-image" style="max-width:440px;border-radius:14px;" alt="AI生成图片"/>
           <div style="margin-top:8px;">
             <button id="regenerate-btn" style="display:none;">重新生成</button>
             <button id="save-image-btn" style="display:none;">保存图片</button>
           </div>
         </div>
-        <div class="ai-disclaimer" style="font-size:0.96rem;color:#888;margin-top:0.6rem;">
+        <div class="ai-disclaimer" style="font-size:0.98rem;color:#888;margin-top:0.8rem;">
           <span data-i18n="disclaimer">
             Disclaimer: This project is for learning and sharing only. Images belong to their original creators.
           </span>
@@ -107,16 +265,16 @@
   </main>
 
   <footer>
-    <div class="footer-main">
-      <span>&copy; 2025 Ghibli-style AI Generator by phonecardcgccard</span>
-      <span> | <span data-i18n="disclaimer">Disclaimer: This project is for learning and sharing only. Images belong to their original creators.</span></span>
-    </div>
-    <div class="footer-links">
-      <a href="https://ghiblio.xyz/" target="_blank" data-i18n="footerInspired">Inspired by Ghiblio.xyz</a>
-      <span> · </span>
-      <span data-i18n="footerContact">Contact: phonecardcgccard</span>
-    </div>
+    <p>
+      © <span id="year"></span> Ghiblio
+      <a href="https://github.com/phonecardcgccard/ghiblioNEW" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg width="18" height="18" fill="#aaa" style="vertical-align:-3px;" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.373 0 12a12 12 0 008.207 11.385c.6.113.82-.262.82-.582 0-.288-.011-1.048-.017-2.056-3.338.728-4.042-1.609-4.042-1.609-.545-1.386-1.332-1.755-1.332-1.755-1.09-.745.082-.73.082-.73 1.205.085 1.84 1.238 1.84 1.238 1.07 1.835 2.809 1.305 3.495.998.108-.775.418-1.305.762-1.606-2.664-.303-5.466-1.334-5.466-5.932 0-1.31.469-2.381 1.236-3.22-.124-.303-.535-1.523.117-3.176 0 0 1.008-.323 3.303 1.23A11.5 11.5 0 0112 6.845c1.022.005 2.051.138 3.014.404 2.292-1.553 3.298-1.23 3.298-1.23.653 1.653.242 2.873.12 3.176.77.839 1.235 1.91 1.235 3.22 0 4.61-2.805 5.625-5.475 5.921.43.372.823 1.104.823 2.225 0 1.606-.015 2.899-.015 3.293 0 .323.217.699.825.58A12.003 12.003 0 0024 12c0-6.627-5.373-12-12-12z"/></svg>
+      </a>
+    </p>
   </footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
   <script src="assets/js/i18n.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
