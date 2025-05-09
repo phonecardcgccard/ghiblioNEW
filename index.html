@@ -20,18 +20,6 @@
       position: relative;
       min-height: 100vh;
     }
-    header {
-      text-align: center;
-      margin: 2.5rem auto 0 auto;
-      background: rgba(255,255,255,0.52);
-      backdrop-filter: blur(15px);
-      border-radius: 22px;
-      box-shadow: 0 6px 24px 0 #b4cbe966;
-      max-width: 680px;
-      padding: 2.1rem 1.2rem 1.3rem 1.2rem;
-      position: relative;
-      z-index: 2;
-    }
     nav {
       background: rgba(46,58,89,0.82);
       padding: 1.1rem 2rem;
@@ -84,7 +72,7 @@
       left: 0;
       right: 0;
       width: 100vw;
-      top: 350px;
+      top: 180px;
       height: 700px;
       min-height: 340px;
       max-height: 1000px;
@@ -105,7 +93,7 @@
       display: flex;
       justify-content: center;
       align-items: flex-start;
-      margin: 0;
+      margin: 3.5rem 0 0 0;
       z-index: 2;
       position: relative;
       width: 100vw;
@@ -115,22 +103,32 @@
       max-width: 900px;
       min-width: 280px;
       min-height: 540px;
-      background: rgba(255,255,255,0.87);
+      background: rgba(255,255,255,0.91);
       backdrop-filter: blur(18px);
       border-radius: 22px;
       box-shadow: 0 4px 32px rgba(0,0,0,0.11);
       padding: 3.6rem 3vw 2.5rem 3vw;
-      text-align: center;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       align-items: center;
       font-size: 1.18rem;
       margin: 0 auto;
+      text-align: center;
     }
     .generator-main h2 {
-      font-size: 2.1rem;
-      margin-bottom: .8rem;
+      font-size: 2.3rem;
+      margin-bottom: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-align: center;
+      width: 100%;
+    }
+    .generator-desc {
+      font-size: 1.18rem;
+      color: #3b546f;
+      margin-bottom: 1.6rem;
+      text-align: center;
     }
     .generator-main form {
       margin-top: 1.1rem;
@@ -213,7 +211,7 @@
     }
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 2.2rem;
       max-width: 1100px;
       margin: 0 auto;
@@ -231,7 +229,7 @@
     }
     @media (max-width: 900px) {
       .gallery-grid {
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
       }
       .gallery-grid img { height: 126px; }
@@ -339,11 +337,6 @@
   </style>
 </head>
 <body>
-  <header>
-    <h1>Ghibli-style AI Generator</h1>
-    <p>Create stunning Ghibli-inspired anime scenes with AI. Enter your creative prompt and generate beautiful Ghibli style art online, free to use and share.</p>
-  </header>
-
   <nav>
     <a href="#">Home</a>
     <a href="#gallery">Gallery</a>
@@ -362,7 +355,7 @@
     <section id="generator">
       <div class="tool-card generator-main">
         <h2>Ghibli Style AI Art Generator</h2>
-        <p>Describe your scene and experience instant Ghibli style AI image generation. Try keywords like "castle in the sky", "healing girl", or "lake at sunset".</p>
+        <p class="generator-desc">Create stunning Ghibli-inspired anime scenes with AI. Enter your creative prompt and generate beautiful Ghibli style art online, free to use and share.</p>
         <form id="prompt-form">
           <input type="text" id="prompt-input" placeholder="Describe your scene, e.g. 'A Ghibli-style castle floating in the sky'" aria-label="Prompt">
           <button class="btn" type="submit">Generate</button>
@@ -397,6 +390,7 @@
         <img src="assets/img/gallery6.jpg" alt="vintage train crossing golden wheat field ai illustration">
         <img src="assets/img/gallery7.jpg" alt="lakeside village sunset ghibli style ai painting">
         <img src="assets/img/gallery8.jpg" alt="couple under cherry blossoms anime ai artwork">
+        <img src="assets/img/gallery9.jpg" alt="fantasy forest bridge ghibli style anime landscape">
       </div>
       <div style="text-align:center; margin:1.7rem 0 0;">
         <p>Want to submit your artwork? <a href="mailto:contact@ghiblio.xyz">Contact us</a> to get featured!</p>
