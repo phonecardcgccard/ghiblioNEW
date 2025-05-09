@@ -1,4 +1,4 @@
-// i18n.js - 国际化词典与切换逻辑（合并版）
+// i18n.js - 国际化词典与切换逻辑
 window.i18n = {
   en: {
     title: "Ghibli-style AI Generator",
@@ -46,7 +46,7 @@ window.i18n = {
   }
 };
 
-// ===== 语言切换核心逻辑 =====
+// 语言切换并刷新文本
 function updateLang(lang) {
   if (!window.i18n || !window.i18n[lang]) return;
   document.querySelectorAll("[data-i18n]").forEach(el => {
@@ -56,24 +56,21 @@ function updateLang(lang) {
     }
   });
   // 输入框和按钮的 placeholder/aria-label
-  if (lang === 'zh') {
-    let promptInput = document.getElementById('prompt-input');
-    if (promptInput) promptInput.setAttribute('placeholder', '输入你的提示词...');
-    let btn = document.querySelector('.btn');
-    if (btn) btn.setAttribute('aria-label', '生成');
-  } else {
-    let promptInput = document.getElementById('prompt-input');
-    if (promptInput) promptInput.setAttribute('placeholder', 'Enter your prompt...');
-    let btn = document.querySelector('.btn');
-    if (btn) btn.setAttribute('aria-label', 'Generate');
+  let promptInput = document.getElementById('prompt-input');
+  if (promptInput) {
+    promptInput.setAttribute('placeholder', lang === 'zh' ? '输入你的提示词...' : 'Enter your prompt...');
   }
-  // 更新复制按钮
+  let btn = document.querySelector('.btn');
+  if (btn) {
+    btn.setAttribute('aria-label', lang === 'zh' ? '生成' : 'Generate');
+  }
+  // 更新所有复制按钮的文本
   document.querySelectorAll('.copy-btn').forEach(btn => {
     btn.innerText = window.i18n[lang]["copyBtn"] || btn.innerText;
   });
 }
 
-// 语言切换按钮事件
+// 绑定语言切换按钮事件
 document.addEventListener("DOMContentLoaded", function(){
   const enBtn = document.getElementById('lang-en');
   const zhBtn = document.getElementById('lang-zh');
@@ -88,16 +85,15 @@ document.addEventListener("DOMContentLoaded", function(){
       zhBtn.classList.add('active');
       enBtn.classList.remove('active');
     });
-    // 初始渲染（根据按钮状态或默认英文）
+    // 页面初始渲染
     if (zhBtn.classList.contains('active')) updateLang('zh');
     else updateLang('en');
   } else {
-    // 没有按钮时，默认英文
     updateLang('en');
   }
 });
 
-// 支持“复制”按钮切换时的“已复制”文本
+// 复制按钮多语言反馈（如有需要可绑定window.copyPrompt）
 window.copyPrompt = function(btn){
   var text = btn.parentElement.querySelector('.prompt-text').innerText;
   navigator.clipboard.writeText(text);
