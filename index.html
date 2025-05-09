@@ -7,33 +7,31 @@
   <link rel="stylesheet" href="assets/css/style.min.css" />
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap" rel="stylesheet">
   <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      min-height: 100%;
-      width: 100vw;
-      background: #f8fafb;
-      box-sizing: border-box;
-      overflow-x: hidden;
-    }
-    body {
-      position: relative;
-      min-height: 100vh;
-    }
+    html, body { margin: 0; padding: 0; min-height: 100%; width: 100vw; background: #f8fafb; box-sizing: border-box; overflow-x: hidden; }
+    body { position: relative; min-height: 100vh; }
     nav {
       background: rgba(46,58,89,0.82);
       padding: 1.1rem 2rem;
       color: #fff;
       display: flex;
+      align-items: center;
       gap: 2rem;
       border-radius: 18px;
       box-shadow: 0 2px 12px #8ba1c8aa;
-      max-width: 760px;
+      max-width: 900px;
       margin: 2.2rem auto 0 auto;
       position: relative;
       z-index: 2;
       font-size: 1.09rem;
-      align-items: center;
+    }
+    .brand {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 1.2px;
+      margin-right: 2.5rem;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
     nav a {
       color: #fff;
@@ -42,9 +40,7 @@
       letter-spacing: 0.5px;
       transition: color 0.2s;
     }
-    nav a:hover {
-      color: #ffb347;
-    }
+    nav a:hover { color: #ffb347;}
     .lang-switch {
       margin-left: auto;
       display: flex;
@@ -66,11 +62,9 @@
       background: #a5b4fc;
       color: #2c3550;
     }
-    /* Background image only under generator */
     .bg-wrap {
       position: absolute;
-      left: 0;
-      right: 0;
+      left: 0; right: 0;
       width: 100vw;
       top: 180px;
       height: 700px;
@@ -88,7 +82,6 @@
       opacity: 0.92;
       filter: blur(0.5px) saturate(1.08);
     }
-    /* Generator section - centered and responsive */
     #generator {
       display: flex;
       justify-content: center;
@@ -195,7 +188,6 @@
       .generator-main #prompt-input { width: 99vw; }
       #result-image { width: 99vw; max-width: 99vw; }
     }
-    /* Gallery */
     #gallery {
       margin: 3.5rem auto 2.5rem auto;
       max-width: 1160px;
@@ -241,7 +233,6 @@
       }
       .gallery-grid img { height: 100px; }
     }
-    /* Prompt Suggestions two columns */
     #prompts {
       margin: 3.5rem auto 2.5rem auto;
       max-width: 950px;
@@ -300,7 +291,6 @@
     .copy-btn:hover {
       background: linear-gradient(90deg, #a5b4fc, #5c8df6);
     }
-    /* --- Footer --- */
     footer {
       background: #181a20;
       color: #bbb;
@@ -338,6 +328,7 @@
 </head>
 <body>
   <nav>
+    <div class="brand">Ghibli-style AI Generator</div>
     <a href="#">Home</a>
     <a href="#gallery">Gallery</a>
     <a href="#prompts">Prompt Suggestions</a>
