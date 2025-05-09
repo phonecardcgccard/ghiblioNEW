@@ -85,7 +85,6 @@
       justify-content: center;
       align-items: flex-start;
     }
-    /* 多行输入textarea，足够高 */
     #prompt-input {
       width: 70%;
       min-width: 140px;
@@ -130,10 +129,9 @@
       align-items: center;
       justify-content: center;
     }
-    /* 图片等比例缩放，最大宽度与卡片相同，居中 */
     #result-image {
-      max-width: 700px;
       width: 100%;
+      max-width: 80vw;
       height: auto;
       border-radius: 18px;
       box-shadow: 0 7px 32px #a5b4fc66;
@@ -143,6 +141,7 @@
       margin-left: auto;
       margin-right: auto;
       object-fit: contain;
+      /* 保持居中和最大化 */
     }
     .generator-btn-row {
       display: flex;
@@ -159,9 +158,12 @@
       color:#888;
       margin-top:0.8rem;
     }
-    @media (max-width: 800px) {
-      .brand-glass, .generator-glass, #result-image { max-width: 99vw; }
-      .gallery-grid, .prompts-list { max-width: 99vw; }
+    @media (max-width: 1200px) {
+      .brand-glass, .generator-glass, .gallery-grid, .prompts-list, #result-image { max-width: 95vw; }
+    }
+    @media (max-width: 900px) {
+      .brand-glass, .generator-glass, .gallery-grid, .prompts-list { max-width: 99vw; }
+      #result-image { max-width: 99vw; }
       .generator-glass form { max-width: 98vw; }
     }
     @media (max-width: 700px) {
@@ -172,7 +174,7 @@
       #prompt-input { max-width: 99vw; }
       .gallery-grid, .prompts-list { max-width: 99vw; }
     }
-    /* Gallery九宫格 */
+    /* Gallery九宫格，占满屏80% */
     #gallery {
       margin: 3.5rem 0 2.5rem 0;
     }
@@ -187,13 +189,15 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
-      max-width: 700px;
+      max-width: min(1100px, 80vw);
       margin: 0 auto;
       padding: 0;
     }
     .gallery-grid img {
       width: 100%;
-      height: 200px;
+      height: 22vw;
+      max-height: 260px;
+      min-height: 140px;
       object-fit: cover;
       border-radius: 15px;
       box-shadow: 0 4px 24px 0 #a8b9d055;
@@ -205,13 +209,13 @@
       transform: scale(1.06);
       box-shadow: 0 7px 32px #a5b4fc66;
     }
-    @media (max-width: 700px) {
+    @media (max-width: 1000px) {
       .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-      .gallery-grid img { height: 110px; }
+      .gallery-grid img { height: 30vw; }
     }
-    @media (max-width: 400px) {
+    @media (max-width: 700px) {
       .gallery-grid { grid-template-columns: 1fr; }
-      .gallery-grid img { height: 70px; }
+      .gallery-grid img { height: 50vw; min-height: 90px; }
     }
     /* Prompt两列排列，宽度同gallery */
     #prompts {
@@ -228,7 +232,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1.1rem 1.5rem;
-      max-width: 700px;
+      max-width: min(1100px, 80vw);
       margin: 0 auto;
       padding: 0;
     }
@@ -268,11 +272,11 @@
     .copy-btn:hover {
       background: linear-gradient(90deg, #a5b4fc, #5c8df6);
     }
-    /* FAQ块 */
+    /* FAQ块，深色毛玻璃 */
     .faq-section {
       margin: 3.5rem auto 2.5rem auto;
-      max-width: 700px;
-      background: rgba(30,40,70,0.76);
+      max-width: min(1100px, 80vw);
+      background: rgba(30,40,70,0.88);
       border-radius: 18px;
       box-shadow: 0 2px 14px #1c2a4533;
       padding: 2rem 1.4rem;
@@ -282,8 +286,9 @@
     .faq-section h2 {
       text-align: center;
       margin-bottom: 1.1rem;
-      color: #c6d6fd;
+      color: #b3d4fc;
       font-size: 1.22rem;
+      letter-spacing: 1px;
     }
     .faq-list {
       margin: 0;
