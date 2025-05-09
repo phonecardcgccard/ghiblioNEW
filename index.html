@@ -7,233 +7,122 @@
   <link rel="stylesheet" href="assets/css/style.min.css" />
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Poppins', Arial, sans-serif;
-      margin: 0;
-      color: #222;
-      background: #f8fafb;
-      min-height: 100vh;
-    }
-    /* 毛玻璃背景层，仅在品牌和生成器部分显示 */
-    .bg-wrap {
-      width: 100vw;
-      height: 600px;
-      position: absolute;
-      left: 0; right: 0; top: 0;
-      z-index: 0;
-      overflow: hidden;
-      pointer-events: none;
-    }
-    .ghibli-bg {
-      width: 100vw;
-      height: 100%;
-      background: url('assets/img/ghibli-bg.jpg') center top/cover no-repeat;
-      opacity: 0.92;
-      filter: blur(0.5px) saturate(1.08);
-    }
-    nav {
-      background: rgba(46,58,89,0.82);
-      padding: 1.1rem 2rem;
-      color: #fff;
-      display: flex;
-      gap: 2rem;
-      border-radius: 18px;
-      box-shadow: 0 2px 12px #8ba1c8aa;
-      max-width: 760px;
-      margin: 2.2rem auto 0 auto;
-      position: relative;
-      z-index: 2;
-      font-size: 1.09rem;
-      align-items: center;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-      letter-spacing: 0.5px;
-      transition: color 0.2s;
-    }
-    nav a:hover {
-      color: #ffb347;
-    }
-    .lang-switch {
-      margin-left: auto;
-      display: flex;
-      gap: 0.4rem;
-    }
-    .lang-btn {
-      background: transparent;
-      border: 1px solid #a5b4fc;
-      color: #fff;
-      border-radius: 12px;
-      font-size: 0.98rem;
-      padding: 0.2rem 0.8rem;
-      margin-left: 0.12rem;
-      cursor: pointer;
-      font-weight: 600;
-      transition: background 0.15s, color 0.15s;
-    }
-    .lang-btn.active, .lang-btn:hover {
-      background: #a5b4fc;
-      color: #2c3550;
-    }
-    /* 品牌毛玻璃卡片 */
-    .brand-glass {
-      max-width: 680px;
-      margin: 3.6rem auto 2.5rem auto;
-      background: rgba(255,255,255,0.52);
-      backdrop-filter: blur(15px);
-      border-radius: 22px;
-      box-shadow: 0 6px 24px 0 #b4cbe966;
-      padding: 2.1rem 1.2rem 1.3rem 1.2rem;
-      position: relative;
-      z-index: 2;
-      text-align: center;
-    }
-    .brand-glass h1 {
-      font-size: 2.2rem;
-      font-weight: 700;
-      letter-spacing: 1.4px;
-      margin-bottom: 0.6rem;
-    }
-    .brand-glass p {
-      color: #4765b1;
-      font-size: 1.15rem;
-      margin: 0;
-      letter-spacing: 0.2px;
-    }
-    /* 生成器毛玻璃卡片最大化且居中 */
-    #generator {
+    /* --- Generator区占比67%宽度 --- */
+    #generator-row {
       display: flex;
       justify-content: center;
-      align-items: center;
-      margin: 0 auto 2.2rem auto;
-      position: relative;
-      z-index: 2;
-      width: 100vw;
+      align-items: flex-start;
+      gap: 2.5vw;
+      margin: 2.5rem 0 2.2rem 0;
+      width: 100%;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
     }
-    .tool-card {
-      background: rgba(255,255,255,0.75);
-      backdrop-filter: blur(18px);
+    .generator-main {
+      width: 67%;
+      min-width: 320px;
+      max-width: 780px;
+      min-height: 510px;
+      background: rgba(255,255,255,0.76);
+      backdrop-filter: blur(16px);
       border-radius: 22px;
       box-shadow: 0 4px 28px rgba(0,0,0,0.12);
-      padding: 2.8rem 2.2rem 2rem 2.2rem;
+      padding: 2.8rem 2.2rem 2.2rem 2.2rem;
       text-align: center;
-      width: 100%;
-      max-width: 660px;
-      margin: 3vw auto;
       display: flex;
       flex-direction: column;
+      justify-content: flex-start;
       align-items: center;
+      font-size: 1.13rem;
     }
-    .tool-card h2 {
-      margin-bottom: 1.2rem;
-      color: #5c8df6;
-      font-size: 2.1rem;
-      font-weight: 700;
-      text-align: center;
-      width: 100%;
-      letter-spacing: 1px;
-    }
-    .tool-card form {
+    .generator-main form {
       margin-top: 1.1rem;
       display: flex;
       gap: 0.5rem;
       justify-content: center;
       align-items: center;
       width: 100%;
-      max-width: 500px;
     }
-    #prompt-input {
-      width: 62%;
+    .generator-main #prompt-input {
+      width: 64%;
       min-width: 120px;
-      max-width: 400px;
-      padding: 0.75rem;
+      max-width: 480px;
+      padding: 0.7rem;
       border-radius: 18px;
       border: 1px solid #d0d7e2;
-      font-size: 1.11rem;
-    }
-    .btn {
-      background: linear-gradient(90deg, #5c8df6, #a5b4fc);
-      color: #fff;
-      padding: 0.7rem 1.5rem;
-      border: none;
-      border-radius: 30px;
-      margin: 0 0 0 0.3rem;
-      font-weight: 600;
       font-size: 1.06rem;
-      letter-spacing: 0.2px;
-      transition: box-shadow 0.19s, transform 0.19s, background 0.19s;
-      box-shadow: 0 2px 12px #a5b4fc44;
-      cursor: pointer;
     }
-    .btn:hover {
-      background: linear-gradient(90deg, #a5b4fc, #5c8df6);
-      box-shadow: 0 4px 18px #a5b4fc66;
-      transform: translateY(-2px) scale(1.04);
+    .generator-main .btn {
+      flex-shrink: 0;
     }
     #result-image-wrap {
-      margin-top: 2rem;
-      width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      margin-top: 1.3rem;
+      width: 100%;
     }
     #result-image {
-      max-width: 95vw;
-      width: 480px;
+      max-width: 98%;
+      width: 420px;
       border-radius: 18px;
       box-shadow: 0 7px 32px #a5b4fc66;
-      margin-bottom: 1.2rem;
+      margin-bottom: 0.8rem;
       background: #f8fafb;
-      display: block;
     }
     .generator-btn-row {
       display: flex;
       gap: 1.2rem;
       justify-content: center;
-      margin-top: 0.4rem;
+      margin-top: 0.2rem;
     }
     .generator-btn-row button {
-      min-width: 120px;
-      font-size: 1.09rem;
-      padding: 0.65rem 1.6rem;
+      min-width: 110px;
+      font-size: 1rem;
+      padding: 0.42rem 1.2rem;
     }
-    @media (max-width: 900px) {
-      .brand-glass { max-width: 98vw; }
-      .tool-card { max-width: 99vw; }
-      #result-image { width: 99vw; max-width: 99vw; }
+    @media (max-width: 950px) {
+      #generator-row {
+        flex-direction: column;
+        gap: 2.2rem;
+      }
+      .generator-main {
+        width: 98vw;
+        max-width: 99vw;
+        min-width: unset;
+        padding: 1.2rem 0.8rem;
+      }
     }
     @media (max-width: 600px) {
-      .brand-glass { padding: 1.2rem 0.4rem 0.9rem 0.4rem; margin-top: 1.2rem;}
-      .tool-card { padding: 1rem 0.2rem 1rem 0.2rem; }
-      .tool-card h2 { font-size: 1.35rem; }
-      #prompt-input { width: 99vw; }
-      #result-image { width: 99vw; max-width: 99vw; }
+      .generator-main #prompt-input { width: 99%; }
+      .generator-main { padding: 1.2rem 0.3rem; }
+      #result-image { width: 98vw; }
     }
-    /* Gallery区九宫格 */
+
+    /* Gallery加大，Prompt两列保持 */
     #gallery {
-      margin: 3.5rem 0 2.5rem 0;
+      margin: 3.5rem auto 2.5rem auto;
+      max-width: 1160px;
     }
     #gallery h2 {
       text-align: center;
       margin-bottom: 1.6rem;
-      font-size: 1.38rem;
+      font-size: 1.48rem;
       color: #3b546f;
       letter-spacing: 0.8px;
     }
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.3rem;
-      max-width: 950px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2.2rem;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 0 1rem;
     }
     .gallery-grid img {
       width: 100%;
-      height: 155px;
+      height: 212px;
       object-fit: cover;
       border-radius: 15px;
       box-shadow: 0 4px 24px 0 #a8b9d055;
@@ -241,37 +130,41 @@
       background: #e9eef5;
       cursor: pointer;
     }
-    .gallery-grid img:hover {
-      transform: scale(1.06);
-      box-shadow: 0 7px 32px #a5b4fc66;
+    @media (max-width: 900px) {
+      .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1rem;
+      }
+      .gallery-grid img { height: 126px; }
     }
-    @media (max-width: 700px) {
-      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-      .gallery-grid img { height: 94px; }
+    @media (max-width: 600px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 0.7rem;
+      }
+      .gallery-grid img { height: 100px; }
     }
-    @media (max-width: 400px) {
-      .gallery-grid { grid-template-columns: 1fr; }
-      .gallery-grid img { height: 70px; }
-    }
-    /* Prompt Suggestions */
+    /* Prompt Suggestions 两列 */
     #prompts {
-      margin: 3.5rem 0 2.5rem 0;
-    }
-    #prompts h2 {
-      text-align: center;
-      margin-bottom: 1.4rem;
-      font-size: 1.28rem;
-      color: #3b546f;
-      letter-spacing: 0.8px;
+      margin: 3.5rem auto 2.5rem auto;
+      max-width: 950px;
     }
     .prompts-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem 2.5rem;
       justify-content: center;
+      align-items: start;
       max-width: 900px;
       margin: 0 auto;
       padding: 0 1rem;
+    }
+    @media (max-width: 720px) {
+      .prompts-list {
+        grid-template-columns: 1fr;
+        gap: 0.7rem;
+        padding: 0 0.2rem;
+      }
     }
     .prompt-card {
       background: rgba(255,255,255,0.67);
@@ -279,15 +172,18 @@
       box-shadow: 0 2px 10px #b4cbe922;
       display: flex;
       align-items: center;
-      padding: 0.6rem 1.1rem;
-      font-size: 1.04rem;
+      padding: 0.7rem 1.2rem;
+      font-size: 1.13rem;
       margin-bottom: 0.4rem;
+      min-height: 56px;
+      justify-content: space-between;
     }
     .prompt-text {
       margin-right: 1.1rem;
       color: #2b4778;
       font-weight: 500;
       letter-spacing: 0.6px;
+      flex: 1 1 auto;
     }
     .copy-btn {
       background: linear-gradient(90deg, #5c8df6, #a5b4fc);
@@ -298,72 +194,40 @@
       font-weight: 600;
       cursor: pointer;
       transition: background 0.18s, box-shadow 0.15s;
-      font-size: 0.96rem;
+      font-size: 1.01rem;
       box-shadow: 0 1px 6px #cbd9f066;
+      flex-shrink: 0;
     }
     .copy-btn:hover {
       background: linear-gradient(90deg, #a5b4fc, #5c8df6);
     }
-    /* FAQ区 */
-    .faq-section {
-      margin: 3.5rem auto 2.5rem auto;
-      max-width: 750px;
-      background: rgba(255,255,255,0.67);
-      border-radius: 18px;
-      box-shadow: 0 2px 10px #b4cbe922;
-      padding: 2rem 1.5rem;
-      font-size: 1.08rem;
-    }
-    .faq-section h2 {
-      text-align: center;
-      margin-bottom: 1.1rem;
-      color: #3b546f;
-      font-size: 1.22rem;
-    }
-    .faq-list {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-    .faq-list li {
-      margin-bottom: 1.3rem;
-      line-height: 1.65;
-    }
-    .faq-list li strong {
-      color: #5c8df6;
-    }
-    /* Footer */
+    /* --- 黑色页脚风格（保留原有文字内容）--- */
     footer {
+      background: #181a20;
+      color: #bbb;
       text-align: center;
-      color: #566;
       font-size: 1rem;
-      background: rgba(255,255,255,0.62);
-      backdrop-filter: blur(8px);
-      border-radius: 15px;
-      box-shadow: 0 2px 12px #b4cbe933;
-      max-width: 780px;
-      margin: 3.5rem auto 1.8rem auto;
-      padding: 1.2rem 0.8rem 1rem 0.8rem;
-      position: relative;
-      z-index: 2;
+      border-radius: 0;
+      box-shadow: none;
+      padding: 2.1rem 0 1.4rem 0;
+      margin: 3.3rem 0 0 0;
+      max-width: unset;
+      border-top: 1px solid #26292f;
+      letter-spacing: .2px;
+      transition: background .2s;
     }
-    .footer-main {
-      margin-bottom: 0.3rem;
+    .footer-main, .footer-links {
+      color: #bbb;
+      margin: 0.3rem 0;
     }
     .footer-main a, .footer-links a {
-      color: #5c8df6;
+      color: #7db2ff;
       text-decoration: none;
-      font-weight: 600;
       margin: 0 0.12rem;
     }
     .footer-main a:hover, .footer-links a:hover {
-      color: #ffb347;
+      color: #4b7bec;
       text-decoration: underline;
-    }
-    .footer-links {
-      font-size: 0.98rem;
-      color: #7a8eae;
-      margin-top: 0.1rem;
     }
     .footer-links span {
       color: #bdbdbd;
@@ -386,38 +250,39 @@
     </div>
   </nav>
 
-  <!-- 品牌名毛玻璃卡片 -->
-  <div class="brand-glass">
-    <h1>Ghibli-style AI Generator</h1>
-    <p>Step into a healing Ghibli world and create your own anime scene</p>
-  </div>
+  <header>
+    <h1 data-i18n="title">Ghibli-style AI Generator</h1>
+    <p data-i18n="subtitle">Step into a healing Ghibli world and create your own anime scene</p>
+  </header>
 
   <main>
-    <section id="generator">
-      <div class="tool-card">
-        <h2>Ghibli Style AI Art Generator</h2>
-        <p>Enter your ideas to generate unique Ghibli-style images!</p>
+    <section id="generator-row">
+      <div class="generator-main tool-card">
+        <h2 data-i18n="generatorTitle">Generator</h2>
+        <p data-i18n="generatorHint">Enter your ideas to generate unique Ghibli-style images!</p>
         <form id="prompt-form">
           <input type="text" id="prompt-input" placeholder="Enter your prompt..." aria-label="Prompt">
-          <button class="btn" type="submit" aria-label="Generate">Generate</button>
+          <button class="btn" type="submit" data-i18n="generateBtn" aria-label="Generate">Generate</button>
         </form>
         <div id="generate-loading" style="display:none;">Generating...</div>
         <div id="generate-error" style="display:none;color:red;"></div>
         <div id="result-image-wrap" style="display:none;">
-          <img id="result-image" style="max-width:340px;border-radius:14px;" alt="AI生成图片"/>
+          <img id="result-image" alt="AI generated image"/>
           <div class="generator-btn-row">
             <button id="regenerate-btn" style="display:none;">Regenerate</button>
             <button id="save-image-btn" style="display:none;">Save Image</button>
           </div>
         </div>
-        <div class="ai-disclaimer" style="font-size:0.96rem;color:#888;margin-top:0.6rem;">
-          Disclaimer: This project is for learning and sharing only. Images belong to their original creators.
+        <div class="ai-disclaimer" style="font-size:0.98rem;color:#888;margin-top:0.8rem;">
+          <span data-i18n="disclaimer">
+            Disclaimer: This project is for learning and sharing only. Images belong to their original creators.
+          </span>
         </div>
       </div>
     </section>
 
     <section id="gallery">
-      <h2>Gallery</h2>
+      <h2 data-i18n="galleryTitle">Gallery</h2>
       <div class="gallery-grid">
         <img src="assets/img/gallery1.jpg" alt="Ghibli风格：森林精灵晨雾插画">
         <img src="assets/img/gallery2.jpg" alt="吉卜力风格：天空之城飞行机器人">
@@ -427,85 +292,67 @@
         <img src="assets/img/gallery6.jpg" alt="复古火车穿越金色麦田">
         <img src="assets/img/gallery7.jpg" alt="湖畔村庄的日落风景">
         <img src="assets/img/gallery8.jpg" alt="樱花树下的情侣动漫插画">
-        <img src="assets/img/gallery9.jpg" alt="新的吉卜力风格插画">
       </div>
     </section>
 
     <section id="prompts">
-      <h2>Prompt Suggestions</h2>
+      <h2 data-i18n="promptSuggestions">Prompt Suggestions</h2>
       <div class="prompts-list">
         <div class="prompt-card">
-          <span class="prompt-text">A misty morning in a fairytale forest, with wandering spirits</span>
-          <button class="copy-btn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
+          <span class="prompt-text" data-i18n="prompt1">A misty morning in a fairytale forest, with wandering spirits</span>
+          <button class="copy-btn" data-i18n="copyBtn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
         </div>
         <div class="prompt-card">
-          <span class="prompt-text">Ghibli-style sky castle with flying robots</span>
-          <button class="copy-btn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
+          <span class="prompt-text" data-i18n="prompt2">Ghibli-style sky castle with flying robots</span>
+          <button class="copy-btn" data-i18n="copyBtn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
         </div>
         <div class="prompt-card">
-          <span class="prompt-text">A small town at night, warm lights and cats on the street</span>
-          <button class="copy-btn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
+          <span class="prompt-text" data-i18n="prompt3">A small town at night, warm lights and cats on the street</span>
+          <button class="copy-btn" data-i18n="copyBtn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
         </div>
         <div class="prompt-card">
-          <span class="prompt-text">A mysterious valley with waterfalls and flying dragons</span>
-          <button class="copy-btn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
+          <span class="prompt-text" data-i18n="prompt4">A mysterious valley with waterfalls and flying dragons</span>
+          <button class="copy-btn" data-i18n="copyBtn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
         </div>
         <div class="prompt-card">
-          <span class="prompt-text">A healing girl with short hair in the wind, wearing a white dress</span>
-          <button class="copy-btn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
+          <span class="prompt-text" data-i18n="prompt5">A healing girl with short hair in the wind, wearing a white dress</span>
+          <button class="copy-btn" data-i18n="copyBtn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
         </div>
         <div class="prompt-card">
-          <span class="prompt-text">An old-fashioned train crossing a golden wheat field, anime scenery</span>
-          <button class="copy-btn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
+          <span class="prompt-text" data-i18n="prompt6">An old-fashioned train crossing a golden wheat field, anime scenery</span>
+          <button class="copy-btn" data-i18n="copyBtn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
         </div>
         <div class="prompt-card">
-          <span class="prompt-text">A peaceful lakeside village at sunset, Ghibli style, soft colors, magical atmosphere, anime landscape</span>
-          <button class="copy-btn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
+          <span class="prompt-text" data-i18n="prompt7">A peaceful lakeside village at sunset, Ghibli style, soft colors, magical atmosphere, anime landscape</span>
+          <button class="copy-btn" data-i18n="copyBtn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
         </div>
         <div class="prompt-card">
-          <span class="prompt-text">A Ghibli-style scene of a young couple holding hands under cherry blossom trees, gentle breeze, warm sunlight, anime illustration</span>
-          <button class="copy-btn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
+          <span class="prompt-text" data-i18n="prompt8">A Ghibli-style scene of a young couple holding hands under cherry blossom trees, gentle breeze, warm sunlight, anime illustration</span>
+          <button class="copy-btn" data-i18n="copyBtn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
         </div>
       </div>
-    </section>
-
-    <section class="faq-section">
-      <h2>FAQ</h2>
-      <ul class="faq-list">
-        <li><strong>Q: What styles does Ghibli-style AI Generator support?</strong><br>
-        A: Only Ghibli style is supported.</li>
-        <li><strong>Q: Can I use the generated images commercially?</strong><br>
-        A: For learning and personal/non-commercial sharing only. Images belong to their original creators.</li>
-        <li><strong>Q: How can I improve image quality?</strong><br>
-        A: Try more specific prompts, e.g. "healing anime lakeside at dusk", or combine style, color, and scene keywords.</li>
-        <li><strong>Q: Is this free to use?</strong><br>
-        A: Yes, this is a free online tool for creative inspiration.</li>
-      </ul>
     </section>
   </main>
 
   <footer>
     <div class="footer-main">
       <span>&copy; 2025 Ghibli-style AI Generator by phonecardcgccard</span>
-      <span> | Disclaimer: This project is for learning and sharing only. Images belong to their original creators.</span>
+      <span> | <span data-i18n="disclaimer">Disclaimer: This project is for learning and sharing only. Images belong to their original creators.</span></span>
     </div>
     <div class="footer-links">
-      <a href="https://ghiblio.xyz/" target="_blank">Inspired by Ghiblio.xyz</a>
+      <a href="https://ghiblio.xyz/" target="_blank" data-i18n="footerInspired">Inspired by Ghiblio.xyz</a>
       <span> · </span>
-      <span>Contact: phonecardcgccard</span>
+      <span data-i18n="footerContact">Contact: phonecardcgccard</span>
     </div>
   </footer>
   <script>
-    function copyPrompt(btn){
-      var text = btn.parentElement.querySelector('.prompt-text').innerText;
-      navigator.clipboard.writeText(text);
-      btn.innerText = 'Copied!';
-      setTimeout(function(){btn.innerText='Copy';},1200);
-    }
+    // 页脚年份可自动
+    // document.getElementById('year').textContent = new Date().getFullYear();
   </script>
   <script src="assets/js/i18n.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>
+
 
 
