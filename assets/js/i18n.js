@@ -46,18 +46,13 @@ window.i18n = {
   }
 };
 
-// ====== 语言切换与渲染逻辑 ======
+// ===== 语言切换核心逻辑 =====
 function updateLang(lang) {
   if (!window.i18n || !window.i18n[lang]) return;
   document.querySelectorAll("[data-i18n]").forEach(el => {
     const key = el.getAttribute("data-i18n");
-    // 支持按钮、span、div等所有标签
     if (window.i18n[lang][key]) {
-      if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
-        el.value = window.i18n[lang][key];
-      } else {
-        el.innerText = window.i18n[lang][key];
-      }
+      el.innerText = window.i18n[lang][key];
     }
   });
   // 输入框和按钮的 placeholder/aria-label
@@ -102,11 +97,10 @@ document.addEventListener("DOMContentLoaded", function(){
   }
 });
 
-// 通用：支持“复制”按钮切换时的“已复制”文本
+// 支持“复制”按钮切换时的“已复制”文本
 window.copyPrompt = function(btn){
   var text = btn.parentElement.querySelector('.prompt-text').innerText;
   navigator.clipboard.writeText(text);
-  // 根据当前语言显示“已复制！”或“Copied!”
   var lang = document.getElementById('lang-zh')?.classList.contains('active') ? 'zh' : 'en';
   btn.innerText = (window.i18n[lang]?.copied) || 'Copied!';
   setTimeout(function(){
