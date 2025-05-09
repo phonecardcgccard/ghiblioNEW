@@ -1,4 +1,4 @@
-// i18n.js - 国际化词典与切换逻辑
+// 词典
 window.i18n = {
   en: {
     title: "Ghibli-style AI Generator",
@@ -52,7 +52,15 @@ function updateLang(lang) {
   document.querySelectorAll("[data-i18n]").forEach(el => {
     const key = el.getAttribute("data-i18n");
     if (window.i18n[lang][key]) {
-      el.innerText = window.i18n[lang][key];
+      // 优先考虑按钮等的 value 属性
+      if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
+        el.value = window.i18n[lang][key];
+      } else if (el.tagName === "BUTTON") {
+        el.textContent = window.i18n[lang][key];
+      } else {
+        // 普通元素
+        el.textContent = window.i18n[lang][key];
+      }
     }
   });
   // 输入框和按钮的 placeholder/aria-label
@@ -66,7 +74,7 @@ function updateLang(lang) {
   }
   // 更新所有复制按钮的文本
   document.querySelectorAll('.copy-btn').forEach(btn => {
-    btn.innerText = window.i18n[lang]["copyBtn"] || btn.innerText;
+    btn.textContent = window.i18n[lang]["copyBtn"] || btn.textContent;
   });
 }
 
@@ -93,13 +101,13 @@ document.addEventListener("DOMContentLoaded", function(){
   }
 });
 
-// 复制按钮多语言反馈（如有需要可绑定window.copyPrompt）
+// 复制按钮多语言反馈
 window.copyPrompt = function(btn){
   var text = btn.parentElement.querySelector('.prompt-text').innerText;
   navigator.clipboard.writeText(text);
   var lang = document.getElementById('lang-zh')?.classList.contains('active') ? 'zh' : 'en';
-  btn.innerText = (window.i18n[lang]?.copied) || 'Copied!';
+  btn.textContent = (window.i18n[lang]?.copied) || 'Copied!';
   setTimeout(function(){
-    btn.innerText = window.i18n[lang]?.copyBtn || 'Copy';
+    btn.textContent = window.i18n[lang]?.copyBtn || 'Copy';
   }, 1200);
 };
