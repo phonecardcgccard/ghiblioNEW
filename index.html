@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Ghibli-style AI Generator</title>
+  <!-- 标题i18n -->
+  <title data-i18n="title">Ghibli-style AI Generator</title>
   <link rel="stylesheet" href="assets/css/style.min.css" />
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap" rel="stylesheet">
   <style>
+    /* ...所有原有样式未更动... */
     body {
       font-family: 'Poppins', Arial, sans-serif;
       margin: 0;
@@ -341,9 +343,9 @@
 <body>
   <div class="hero-bg"></div>
   <nav>
-    <a href="#">Home</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#prompts">Prompt Suggestions</a>
+    <a href="#" data-i18n="navHome">Home</a>
+    <a href="#gallery" data-i18n="navGallery">Gallery</a>
+    <a href="#prompts" data-i18n="navPrompts">Prompt Suggestions</a>
     <div class="lang-switch">
       <button id="lang-en" class="lang-btn active" aria-label="English">EN</button>
       <button id="lang-zh" class="lang-btn" aria-label="中文">中文</button>
@@ -352,35 +354,35 @@
 
   <!-- 品牌名毛玻璃卡片 -->
   <div class="brand-glass">
-    <h1>Ghibli-style AI Generator</h1>
-    <p>Step into a healing Ghibli world and create your own anime scene</p>
+    <h1 data-i18n="title">Ghibli-style AI Generator</h1>
+    <p data-i18n="subtitle">Step into a healing Ghibli world and create your own anime scene</p>
   </div>
 
   <!-- 生成器毛玻璃卡片，与品牌卡片同宽且正下方 -->
   <div class="generator-glass">
-    <h2>Ghibli Style AI Art Generator</h2>
-    <p>Enter your ideas to generate unique Ghibli-style images!</p>
+    <h2 data-i18n="generatorTitle">Ghibli Style AI Art Generator</h2>
+    <p data-i18n="generatorHint">Enter your ideas to generate unique Ghibli-style images!</p>
     <form id="prompt-form">
       <textarea id="prompt-input" placeholder="Enter your prompt..." aria-label="Prompt" rows="3"></textarea>
-      <button class="btn" type="submit" aria-label="Generate">Generate</button>
+      <button class="btn" type="submit" data-i18n="generateBtn" aria-label="Generate">Generate</button>
     </form>
-    <div id="generate-loading" style="display:none;">Generating...</div>
+    <div id="generate-loading" style="display:none;" data-i18n="generating">Generating...</div>
     <div id="generate-error" style="display:none;color:red;"></div>
     <div id="result-image-wrap" style="display:none;">
       <img id="result-image" alt="AI生成图片"/>
       <div class="generator-btn-row">
-        <button id="regenerate-btn" style="display:none;">Regenerate</button>
-        <button id="save-image-btn" style="display:none;">Save Image</button>
+        <button id="regenerate-btn" style="display:none;" data-i18n="regenerateBtn">Regenerate</button>
+        <button id="save-image-btn" style="display:none;" data-i18n="saveImageBtn">Save Image</button>
       </div>
     </div>
     <div class="ai-disclaimer">
-      Disclaimer: This project is for learning and sharing only. Images belong to their original creators.
+      <span data-i18n="disclaimer">Disclaimer: This project is for learning and sharing only. Images belong to their original creators.</span>
     </div>
   </div>
 
   <main>
     <section id="gallery">
-      <h2>Gallery</h2>
+      <h2 data-i18n="galleryTitle">Gallery</h2>
       <div class="gallery-grid">
         <img src="assets/img/gallery1.jpg" alt="Ghibli风格：森林精灵晨雾插画">
         <img src="assets/img/gallery2.jpg" alt="吉卜力风格：天空之城飞行机器人">
@@ -395,54 +397,54 @@
     </section>
 
     <section id="prompts">
-      <h2>Prompt Suggestions</h2>
+      <h2 data-i18n="promptSuggestions">Prompt Suggestions</h2>
       <div class="prompts-list">
         <div class="prompt-card">
-          <span class="prompt-text">A misty morning in a fairytale forest, with wandering spirits</span>
-          <button class="copy-btn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
+          <span class="prompt-text" data-i18n="prompt1">A misty morning in a fairytale forest, with wandering spirits</span>
+          <button class="copy-btn" data-i18n="copyBtn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
         </div>
         <div class="prompt-card">
-          <span class="prompt-text">Ghibli-style sky castle with flying robots</span>
-          <button class="copy-btn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
+          <span class="prompt-text" data-i18n="prompt2">Ghibli-style sky castle with flying robots</span>
+          <button class="copy-btn" data-i18n="copyBtn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
         </div>
         <div class="prompt-card">
-          <span class="prompt-text">A small town at night, warm lights and cats on the street</span>
-          <button class="copy-btn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
+          <span class="prompt-text" data-i18n="prompt3">A small town at night, warm lights and cats on the street</span>
+          <button class="copy-btn" data-i18n="copyBtn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
         </div>
         <div class="prompt-card">
-          <span class="prompt-text">A mysterious valley with waterfalls and flying dragons</span>
-          <button class="copy-btn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
+          <span class="prompt-text" data-i18n="prompt4">A mysterious valley with waterfalls and flying dragons</span>
+          <button class="copy-btn" data-i18n="copyBtn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
         </div>
         <div class="prompt-card">
-          <span class="prompt-text">A healing girl with short hair in the wind, wearing a white dress</span>
-          <button class="copy-btn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
+          <span class="prompt-text" data-i18n="prompt5">A healing girl with short hair in the wind, wearing a white dress</span>
+          <button class="copy-btn" data-i18n="copyBtn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
         </div>
         <div class="prompt-card">
-          <span class="prompt-text">An old-fashioned train crossing a golden wheat field, anime scenery</span>
-          <button class="copy-btn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
+          <span class="prompt-text" data-i18n="prompt6">An old-fashioned train crossing a golden wheat field, anime scenery</span>
+          <button class="copy-btn" data-i18n="copyBtn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
         </div>
         <div class="prompt-card">
-          <span class="prompt-text">A peaceful lakeside village at sunset, Ghibli style, soft colors, magical atmosphere, anime landscape</span>
-          <button class="copy-btn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
+          <span class="prompt-text" data-i18n="prompt7">A peaceful lakeside village at sunset, Ghibli style, soft colors, magical atmosphere, anime landscape</span>
+          <button class="copy-btn" data-i18n="copyBtn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
         </div>
         <div class="prompt-card">
-          <span class="prompt-text">A Ghibli-style scene of a young couple holding hands under cherry blossom trees, gentle breeze, warm sunlight, anime illustration</span>
-          <button class="copy-btn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
+          <span class="prompt-text" data-i18n="prompt8">A Ghibli-style scene of a young couple holding hands under cherry blossom trees, gentle breeze, warm sunlight, anime illustration</span>
+          <button class="copy-btn" data-i18n="copyBtn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
         </div>
       </div>
     </section>
 
     <section class="faq-section">
-      <h2>FAQ</h2>
+      <h2 data-i18n="faqTitle">FAQ</h2>
       <ul class="faq-list">
-        <li><strong>Q: What styles does Ghibli-style AI Generator support?</strong><br>
-        A: Only Ghibli style is supported.</li>
-        <li><strong>Q: Can I use the generated images commercially?</strong><br>
-        A: For learning and personal/non-commercial sharing only. Images belong to their original creators.</li>
-        <li><strong>Q: How can I improve image quality?</strong><br>
-        A: Try more specific prompts, e.g. "healing anime lakeside at dusk", or combine style, color, and scene keywords.</li>
-        <li><strong>Q: Is this free to use?</strong><br>
-        A: Yes, this is a free online tool for creative inspiration.</li>
+        <li><strong data-i18n="faqQ1">Q: What styles does Ghibli-style AI Generator support?</strong><br>
+        <span data-i18n="faqA1">A: Only Ghibli style is supported.</span></li>
+        <li><strong data-i18n="faqQ2">Q: Can I use the generated images commercially?</strong><br>
+        <span data-i18n="faqA2">A: For learning and personal/non-commercial sharing only. Images belong to their original creators.</span></li>
+        <li><strong data-i18n="faqQ3">Q: How can I improve image quality?</strong><br>
+        <span data-i18n="faqA3">A: Try more specific prompts, e.g. "healing anime lakeside at dusk", or combine style, color, and scene keywords.</span></li>
+        <li><strong data-i18n="faqQ4">Q: Is this free to use?</strong><br>
+        <span data-i18n="faqA4">A: Yes, this is a free online tool for creative inspiration.</span></li>
       </ul>
     </section>
   </main>
@@ -450,12 +452,13 @@
   <footer>
     <div class="footer-main">
       <span>&copy; 2025 Ghibli-style AI Generator by phonecardcgccard</span>
-      <span> | Disclaimer: This project is for learning and sharing only. Images belong to their original creators.</span>
+      <span> | </span>
+      <span data-i18n="disclaimer">Disclaimer: This project is for learning and sharing only. Images belong to their original creators.</span>
     </div>
     <div class="footer-links">
-      <a href="https://ghiblio.xyz/" target="_blank">Inspired by Ghiblio.xyz</a>
+      <a href="https://ghiblio.xyz/" target="_blank" data-i18n="footerInspired">Inspired by Ghiblio.xyz</a>
       <span> · </span>
-      <span>Contact: phonecardcgccard</span>
+      <span data-i18n="footerContact">Contact: phonecardcgccard</span>
     </div>
   </footer>
   <script>
