@@ -7,31 +7,45 @@
   <link rel="stylesheet" href="assets/css/style.min.css" />
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap" rel="stylesheet">
   <style>
-    html, body { margin: 0; padding: 0; min-height: 100%; width: 100vw; background: #f8fafb; box-sizing: border-box; overflow-x: hidden; }
-    body { position: relative; min-height: 100vh; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      width: 100vw;
+      background: #f8fafb;
+      box-sizing: border-box;
+      overflow-x: hidden;
+    }
+    body {
+      position: relative;
+      min-height: 100vh;
+    }
+    header {
+      text-align: center;
+      margin: 2.5rem auto 0 auto;
+      background: rgba(255,255,255,0.52);
+      backdrop-filter: blur(15px);
+      border-radius: 22px;
+      box-shadow: 0 6px 24px 0 #b4cbe966;
+      max-width: 680px;
+      padding: 2.1rem 1.2rem 1.3rem 1.2rem;
+      position: relative;
+      z-index: 2;
+    }
     nav {
       background: rgba(46,58,89,0.82);
       padding: 1.1rem 2rem;
       color: #fff;
       display: flex;
-      align-items: center;
       gap: 2rem;
       border-radius: 18px;
       box-shadow: 0 2px 12px #8ba1c8aa;
-      max-width: 900px;
+      max-width: 760px;
       margin: 2.2rem auto 0 auto;
       position: relative;
       z-index: 2;
       font-size: 1.09rem;
-    }
-    .brand {
-      font-size: 1.45rem;
-      font-weight: 700;
-      color: #fff;
-      letter-spacing: 1.2px;
-      margin-right: 2.5rem;
-      white-space: nowrap;
-      flex-shrink: 0;
+      align-items: center;
     }
     nav a {
       color: #fff;
@@ -40,7 +54,9 @@
       letter-spacing: 0.5px;
       transition: color 0.2s;
     }
-    nav a:hover { color: #ffb347;}
+    nav a:hover {
+      color: #ffb347;
+    }
     .lang-switch {
       margin-left: auto;
       display: flex;
@@ -62,11 +78,13 @@
       background: #a5b4fc;
       color: #2c3550;
     }
+    /* Background image only under generator */
     .bg-wrap {
       position: absolute;
-      left: 0; right: 0;
+      left: 0;
+      right: 0;
       width: 100vw;
-      top: 180px;
+      top: 350px;
       height: 700px;
       min-height: 340px;
       max-height: 1000px;
@@ -82,11 +100,12 @@
       opacity: 0.92;
       filter: blur(0.5px) saturate(1.08);
     }
+    /* Generator section - centered and responsive */
     #generator {
       display: flex;
       justify-content: center;
       align-items: flex-start;
-      margin: 3.5rem 0 0 0;
+      margin: 0;
       z-index: 2;
       position: relative;
       width: 100vw;
@@ -96,32 +115,22 @@
       max-width: 900px;
       min-width: 280px;
       min-height: 540px;
-      background: rgba(255,255,255,0.91);
+      background: rgba(255,255,255,0.87);
       backdrop-filter: blur(18px);
       border-radius: 22px;
       box-shadow: 0 4px 32px rgba(0,0,0,0.11);
       padding: 3.6rem 3vw 2.5rem 3vw;
+      text-align: center;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       align-items: center;
       font-size: 1.18rem;
       margin: 0 auto;
-      text-align: center;
     }
     .generator-main h2 {
-      font-size: 2.3rem;
-      margin-bottom: 1.1rem;
-      font-weight: 700;
-      letter-spacing: 1.2px;
-      text-align: center;
-      width: 100%;
-    }
-    .generator-desc {
-      font-size: 1.18rem;
-      color: #3b546f;
-      margin-bottom: 1.6rem;
-      text-align: center;
+      font-size: 2.1rem;
+      margin-bottom: .8rem;
     }
     .generator-main form {
       margin-top: 1.1rem;
@@ -188,6 +197,7 @@
       .generator-main #prompt-input { width: 99vw; }
       #result-image { width: 99vw; max-width: 99vw; }
     }
+    /* Gallery */
     #gallery {
       margin: 3.5rem auto 2.5rem auto;
       max-width: 1160px;
@@ -203,7 +213,7 @@
     }
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 2.2rem;
       max-width: 1100px;
       margin: 0 auto;
@@ -221,7 +231,7 @@
     }
     @media (max-width: 900px) {
       .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
         gap: 1rem;
       }
       .gallery-grid img { height: 126px; }
@@ -233,6 +243,7 @@
       }
       .gallery-grid img { height: 100px; }
     }
+    /* Prompt Suggestions two columns */
     #prompts {
       margin: 3.5rem auto 2.5rem auto;
       max-width: 950px;
@@ -291,6 +302,7 @@
     .copy-btn:hover {
       background: linear-gradient(90deg, #a5b4fc, #5c8df6);
     }
+    /* --- Footer --- */
     footer {
       background: #181a20;
       color: #bbb;
@@ -327,8 +339,12 @@
   </style>
 </head>
 <body>
+  <header>
+    <h1>Ghibli-style AI Generator</h1>
+    <p>Create stunning Ghibli-inspired anime scenes with AI. Enter your creative prompt and generate beautiful Ghibli style art online, free to use and share.</p>
+  </header>
+
   <nav>
-    <div class="brand">Ghibli-style AI Generator</div>
     <a href="#">Home</a>
     <a href="#gallery">Gallery</a>
     <a href="#prompts">Prompt Suggestions</a>
@@ -346,7 +362,7 @@
     <section id="generator">
       <div class="tool-card generator-main">
         <h2>Ghibli Style AI Art Generator</h2>
-        <p class="generator-desc">Create stunning Ghibli-inspired anime scenes with AI. Enter your creative prompt and generate beautiful Ghibli style art online, free to use and share.</p>
+        <p>Describe your scene and experience instant Ghibli style AI image generation. Try keywords like "castle in the sky", "healing girl", or "lake at sunset".</p>
         <form id="prompt-form">
           <input type="text" id="prompt-input" placeholder="Describe your scene, e.g. 'A Ghibli-style castle floating in the sky'" aria-label="Prompt">
           <button class="btn" type="submit">Generate</button>
@@ -381,7 +397,6 @@
         <img src="assets/img/gallery6.jpg" alt="vintage train crossing golden wheat field ai illustration">
         <img src="assets/img/gallery7.jpg" alt="lakeside village sunset ghibli style ai painting">
         <img src="assets/img/gallery8.jpg" alt="couple under cherry blossoms anime ai artwork">
-        <img src="assets/img/gallery9.jpg" alt="fantasy forest bridge ghibli style anime landscape">
       </div>
       <div style="text-align:center; margin:1.7rem 0 0;">
         <p>Want to submit your artwork? <a href="mailto:contact@ghiblio.xyz">Contact us</a> to get featured!</p>
@@ -465,3 +480,4 @@
   <script src="assets/js/main.js"></script>
 </body>
 </html>
+
