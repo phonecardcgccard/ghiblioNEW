@@ -3,38 +3,146 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Ghibli-style AI Generator</title>
+  <title>Ghibli-style AI Generator | Ghibli Style AI Art Creator Online</title>
+  <meta name="description" content="Ghibli-style AI Generator is an online tool to easily generate Ghibli-inspired anime scenes with AI. Try unique prompts, explore the AI art gallery, and get inspired!">
   <link rel="stylesheet" href="assets/css/style.min.css" />
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap" rel="stylesheet">
+  <!-- SEO Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Ghibli-style AI Generator",
+    "url": "https://phonecardcgccard.github.io/ghiblioNEW/"
+  }
+  </script>
   <style>
-    /* --- Generator区占比67%宽度 --- */
-    #generator-row {
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      width: 100vw;
+      box-sizing: border-box;
+      background: #f8fafb;
+    }
+    body {
+      position: relative;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    /* Header styles */
+    header {
+      text-align: center;
+      margin: 2.5rem auto 0 auto;
+      background: rgba(255,255,255,0.52);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border-radius: 22px;
+      box-shadow: 0 6px 24px 0 #b4cbe966;
+      max-width: 680px;
+      padding: 2.1rem 1.2rem 1.3rem 1.2rem;
+      position: relative;
+      z-index: 2;
+    }
+    /* Move background under header, not behind nav/header */
+    .bg-wrap {
+      width: 100vw;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 210px; /* header height + margin */
+      height: 870px;
+      min-height: 380px;
+      max-height: 1200px;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+      background: transparent;
+    }
+    .ghibli-bg {
+      width: 100vw;
+      height: 100%;
+      background: url('assets/img/ghibli-bg.jpg') center top/cover no-repeat;
+      opacity: 0.92;
+      filter: blur(0.5px) saturate(1.08);
+    }
+    nav {
+      background: rgba(46,58,89,0.82);
+      padding: 1.1rem 2rem;
+      color: #fff;
+      display: flex;
+      gap: 2rem;
+      border-radius: 18px;
+      box-shadow: 0 2px 12px #8ba1c8aa;
+      max-width: 760px;
+      margin: 2.2rem auto 0 auto;
+      position: relative;
+      z-index: 2;
+      font-size: 1.09rem;
+      align-items: center;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      color: #ffb347;
+    }
+    .lang-switch {
+      margin-left: auto;
+      display: flex;
+      gap: 0.4rem;
+    }
+    .lang-btn {
+      background: transparent;
+      border: 1px solid #a5b4fc;
+      color: #fff;
+      border-radius: 12px;
+      font-size: 0.98rem;
+      padding: 0.2rem 0.8rem;
+      margin-left: 0.12rem;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.15s, color 0.15s;
+    }
+    .lang-btn.active, .lang-btn:hover {
+      background: #a5b4fc;
+      color: #2c3550;
+    }
+    /* Generator section - full width and prominent */
+    #generator {
+      width: 100vw;
       display: flex;
       justify-content: center;
       align-items: flex-start;
-      gap: 2.5vw;
-      margin: 2.5rem 0 2.2rem 0;
-      width: 100%;
-      max-width: 1200px;
-      margin-left: auto;
-      margin-right: auto;
+      margin: 0;
+      z-index: 2;
+      position: relative;
     }
-    .generator-main {
-      width: 67%;
-      min-width: 320px;
-      max-width: 780px;
-      min-height: 510px;
-      background: rgba(255,255,255,0.76);
-      backdrop-filter: blur(16px);
-      border-radius: 22px;
-      box-shadow: 0 4px 28px rgba(0,0,0,0.12);
-      padding: 2.8rem 2.2rem 2.2rem 2.2rem;
+    .tool-card.generator-main {
+      width: 100vw;
+      max-width: 100vw;
+      min-width: 0;
+      min-height: 540px;
+      background: rgba(255,255,255,0.89);
+      backdrop-filter: blur(18px);
+      border-radius: 0;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.11);
+      padding: 3.6rem 0 2.5rem 0;
       text-align: center;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       align-items: center;
-      font-size: 1.13rem;
+      font-size: 1.18rem;
+      margin: 0;
+    }
+    .generator-main h2 {
+      font-size: 2.1rem;
+      margin-bottom: .8rem;
     }
     .generator-main form {
       margin-top: 1.1rem;
@@ -45,65 +153,62 @@
       width: 100%;
     }
     .generator-main #prompt-input {
-      width: 64%;
-      min-width: 120px;
-      max-width: 480px;
-      padding: 0.7rem;
+      width: 40vw;
+      min-width: 180px;
+      max-width: 640px;
+      padding: 0.9rem;
       border-radius: 18px;
       border: 1px solid #d0d7e2;
-      font-size: 1.06rem;
+      font-size: 1.18rem;
     }
     .generator-main .btn {
       flex-shrink: 0;
+      padding: 0.9rem 2rem;
+      font-size: 1.13rem;
     }
     #result-image-wrap {
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-top: 1.3rem;
+      margin-top: 2.1rem;
       width: 100%;
     }
     #result-image {
-      max-width: 98%;
-      width: 420px;
-      border-radius: 18px;
+      max-width: 96vw;
+      width: 800px;
+      border-radius: 24px;
       box-shadow: 0 7px 32px #a5b4fc66;
-      margin-bottom: 0.8rem;
+      margin-bottom: 1.2rem;
       background: #f8fafb;
+      display: block;
     }
     .generator-btn-row {
       display: flex;
       gap: 1.2rem;
       justify-content: center;
-      margin-top: 0.2rem;
+      margin-top: 0.4rem;
     }
     .generator-btn-row button {
-      min-width: 110px;
-      font-size: 1rem;
-      padding: 0.42rem 1.2rem;
+      min-width: 120px;
+      font-size: 1.09rem;
+      padding: 0.65rem 1.6rem;
     }
-    @media (max-width: 950px) {
-      #generator-row {
-        flex-direction: column;
-        gap: 2.2rem;
-      }
-      .generator-main {
-        width: 98vw;
-        max-width: 99vw;
-        min-width: unset;
-        padding: 1.2rem 0.8rem;
-      }
+    @media (max-width: 1000px) {
+      .generator-main #prompt-input { width: 90vw; max-width: 98vw;}
+      #result-image { width: 99vw; }
+      .tool-card.generator-main { padding: 1.4rem 0 1.2rem 0; }
     }
     @media (max-width: 600px) {
-      .generator-main #prompt-input { width: 99%; }
-      .generator-main { padding: 1.2rem 0.3rem; }
-      #result-image { width: 98vw; }
+      .generator-main { padding: 1.2rem 0.1rem; }
+      .generator-main #prompt-input { width: 99vw; }
+      #result-image { width: 99vw; }
     }
-
-    /* Gallery加大，Prompt两列保持 */
+    /* Gallery large, two columns for prompt suggestions */
     #gallery {
       margin: 3.5rem auto 2.5rem auto;
       max-width: 1160px;
+      position: relative;
+      z-index: 3;
     }
     #gallery h2 {
       text-align: center;
@@ -144,10 +249,12 @@
       }
       .gallery-grid img { height: 100px; }
     }
-    /* Prompt Suggestions 两列 */
+    /* Prompt Suggestions two columns */
     #prompts {
       margin: 3.5rem auto 2.5rem auto;
       max-width: 950px;
+      position: relative;
+      z-index: 3;
     }
     .prompts-list {
       display: grid;
@@ -201,7 +308,7 @@
     .copy-btn:hover {
       background: linear-gradient(90deg, #a5b4fc, #5c8df6);
     }
-    /* --- 黑色页脚风格（保留原有文字内容）--- */
+    /* --- Dark footer, preserve original text --- */
     footer {
       background: #181a20;
       color: #bbb;
@@ -215,6 +322,8 @@
       border-top: 1px solid #26292f;
       letter-spacing: .2px;
       transition: background .2s;
+      z-index: 4;
+      position: relative;
     }
     .footer-main, .footer-links {
       color: #bbb;
@@ -236,9 +345,10 @@
   </style>
 </head>
 <body>
-  <div class="bg-wrap">
-    <div class="ghibli-bg"></div>
-  </div>
+  <header>
+    <h1>Ghibli-style AI Generator</h1>
+    <p>Create stunning Ghibli-inspired anime scenes with AI. Enter your creative prompt and generate beautiful Ghibli style art online, free to use and share.</p>
+  </header>
 
   <nav>
     <a href="#">Home</a>
@@ -250,19 +360,18 @@
     </div>
   </nav>
 
-  <header>
-    <h1 data-i18n="title">Ghibli-style AI Generator</h1>
-    <p data-i18n="subtitle">Step into a healing Ghibli world and create your own anime scene</p>
-  </header>
+  <div class="bg-wrap">
+    <div class="ghibli-bg"></div>
+  </div>
 
   <main>
-    <section id="generator-row">
-      <div class="generator-main tool-card">
-        <h2 data-i18n="generatorTitle">Generator</h2>
-        <p data-i18n="generatorHint">Enter your ideas to generate unique Ghibli-style images!</p>
+    <section id="generator">
+      <div class="tool-card generator-main">
+        <h2>Ghibli Style AI Art Generator</h2>
+        <p>Describe your scene and experience instant Ghibli style AI image generation. Try keywords like "castle in the sky", "healing girl", or "lake at sunset".</p>
         <form id="prompt-form">
-          <input type="text" id="prompt-input" placeholder="Enter your prompt..." aria-label="Prompt">
-          <button class="btn" type="submit" data-i18n="generateBtn" aria-label="Generate">Generate</button>
+          <input type="text" id="prompt-input" placeholder="Describe your scene, e.g. 'A Ghibli-style castle floating in the sky'" aria-label="Prompt">
+          <button class="btn" type="submit">Generate</button>
         </form>
         <div id="generate-loading" style="display:none;">Generating...</div>
         <div id="generate-error" style="display:none;color:red;"></div>
@@ -274,61 +383,77 @@
           </div>
         </div>
         <div class="ai-disclaimer" style="font-size:0.98rem;color:#888;margin-top:0.8rem;">
-          <span data-i18n="disclaimer">
-            Disclaimer: This project is for learning and sharing only. Images belong to their original creators.
-          </span>
+          Disclaimer: This project is for learning and sharing only. Images belong to their original creators.
+        </div>
+        <div style="margin:1.1rem 0 0 0; color:#5c8df6; font-size:1.08rem;">
+          <strong>Popular long-tail keywords:</strong>
+          <span style="color:#333;">ghibli style ai generator, ai anime image generator, ai art online tool, ghibli style generator free, ai anime prompt examples</span>
         </div>
       </div>
     </section>
 
     <section id="gallery">
-      <h2 data-i18n="galleryTitle">Gallery</h2>
+      <h2>Gallery | AI Anime Art Gallery</h2>
       <div class="gallery-grid">
-        <img src="assets/img/gallery1.jpg" alt="Ghibli风格：森林精灵晨雾插画">
-        <img src="assets/img/gallery2.jpg" alt="吉卜力风格：天空之城飞行机器人">
-        <img src="assets/img/gallery3.jpg" alt="夜晚小镇与猫，动漫场景">
-        <img src="assets/img/gallery4.jpg" alt="神秘山谷与飞龙插画">
-        <img src="assets/img/gallery5.jpg" alt="治愈系少女风中白裙">
-        <img src="assets/img/gallery6.jpg" alt="复古火车穿越金色麦田">
-        <img src="assets/img/gallery7.jpg" alt="湖畔村庄的日落风景">
-        <img src="assets/img/gallery8.jpg" alt="樱花树下的情侣动漫插画">
+        <img src="assets/img/gallery1.jpg" alt="ghibli style forest spirit ai art">
+        <img src="assets/img/gallery2.jpg" alt="ghibli style sky castle with flying robots ai art">
+        <img src="assets/img/gallery3.jpg" alt="night town and cats anime ai scene">
+        <img src="assets/img/gallery4.jpg" alt="mysterious valley flying dragon ghibli style ai art">
+        <img src="assets/img/gallery5.jpg" alt="healing girl white dress ai anime art">
+        <img src="assets/img/gallery6.jpg" alt="vintage train crossing golden wheat field ai illustration">
+        <img src="assets/img/gallery7.jpg" alt="lakeside village sunset ghibli style ai painting">
+        <img src="assets/img/gallery8.jpg" alt="couple under cherry blossoms anime ai artwork">
+      </div>
+      <div style="text-align:center; margin:1.7rem 0 0;">
+        <p>Want to submit your artwork? <a href="mailto:contact@ghiblio.xyz">Contact us</a> to get featured!</p>
       </div>
     </section>
 
     <section id="prompts">
-      <h2 data-i18n="promptSuggestions">Prompt Suggestions</h2>
+      <h2>Prompt Suggestions | Get Inspired</h2>
       <div class="prompts-list">
         <div class="prompt-card">
-          <span class="prompt-text" data-i18n="prompt1">A misty morning in a fairytale forest, with wandering spirits</span>
-          <button class="copy-btn" data-i18n="copyBtn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
+          <span class="prompt-text">A misty morning in a fairytale forest, with wandering spirits</span>
+          <button class="copy-btn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
         </div>
         <div class="prompt-card">
-          <span class="prompt-text" data-i18n="prompt2">Ghibli-style sky castle with flying robots</span>
-          <button class="copy-btn" data-i18n="copyBtn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
+          <span class="prompt-text">Ghibli-style sky castle with flying robots</span>
+          <button class="copy-btn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
         </div>
         <div class="prompt-card">
-          <span class="prompt-text" data-i18n="prompt3">A small town at night, warm lights and cats on the street</span>
-          <button class="copy-btn" data-i18n="copyBtn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
+          <span class="prompt-text">A small town at night, warm lights and cats on the street</span>
+          <button class="copy-btn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
         </div>
         <div class="prompt-card">
-          <span class="prompt-text" data-i18n="prompt4">A mysterious valley with waterfalls and flying dragons</span>
-          <button class="copy-btn" data-i18n="copyBtn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
+          <span class="prompt-text">A mysterious valley with waterfalls and flying dragons</span>
+          <button class="copy-btn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
         </div>
         <div class="prompt-card">
-          <span class="prompt-text" data-i18n="prompt5">A healing girl with short hair in the wind, wearing a white dress</span>
-          <button class="copy-btn" data-i18n="copyBtn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
+          <span class="prompt-text">A healing girl with short hair in the wind, wearing a white dress</span>
+          <button class="copy-btn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
         </div>
         <div class="prompt-card">
-          <span class="prompt-text" data-i18n="prompt6">An old-fashioned train crossing a golden wheat field, anime scenery</span>
-          <button class="copy-btn" data-i18n="copyBtn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
+          <span class="prompt-text">An old-fashioned train crossing a golden wheat field, anime scenery</span>
+          <button class="copy-btn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
         </div>
         <div class="prompt-card">
-          <span class="prompt-text" data-i18n="prompt7">A peaceful lakeside village at sunset, Ghibli style, soft colors, magical atmosphere, anime landscape</span>
-          <button class="copy-btn" data-i18n="copyBtn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
+          <span class="prompt-text">A peaceful lakeside village at sunset, Ghibli style, soft colors, magical atmosphere, anime landscape</span>
+          <button class="copy-btn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
         </div>
         <div class="prompt-card">
-          <span class="prompt-text" data-i18n="prompt8">A Ghibli-style scene of a young couple holding hands under cherry blossom trees, gentle breeze, warm sunlight, anime illustration</span>
-          <button class="copy-btn" data-i18n="copyBtn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
+          <span class="prompt-text">A Ghibli-style scene of a young couple holding hands under cherry blossom trees, gentle breeze, warm sunlight, anime illustration</span>
+          <button class="copy-btn" onclick="copyPrompt(this)" aria-label="Copy Prompt">Copy</button>
+        </div>
+      </div>
+      <div style="margin:2.5rem 0 0 0;text-align:center;">
+        <h3>FAQ</h3>
+        <div style="max-width:680px;margin:0 auto;text-align:left;">
+          <p><strong>Q: What styles does Ghibli-style AI Generator support?</strong><br>
+          A: Only Ghibli style is supported.</p>
+          <p><strong>Q: Can I use the generated images commercially?</strong><br>
+          A: For learning and personal/non-commercial sharing only. Images belong to their original creators.</p>
+          <p><strong>Q: How can I improve image quality?</strong><br>
+          A: Try more specific prompts, e.g. "healing anime lakeside at dusk", or combine style, color, and scene keywords.</p>
         </div>
       </div>
     </section>
@@ -336,18 +461,26 @@
 
   <footer>
     <div class="footer-main">
-      <span>&copy; 2025 Ghibli-style AI Generator by phonecardcgccard</span>
-      <span> | <span data-i18n="disclaimer">Disclaimer: This project is for learning and sharing only. Images belong to their original creators.</span></span>
+      <span>&copy; <span id="year"></span> Ghibli-style AI Generator by phonecardcgccard</span>
+      <span> | Disclaimer: This project is for learning and sharing only. Images belong to their original creators.</span>
     </div>
     <div class="footer-links">
-      <a href="https://ghiblio.xyz/" target="_blank" data-i18n="footerInspired">Inspired by Ghiblio.xyz</a>
+      <a href="https://ghiblio.xyz/" target="_blank">Inspired by Ghiblio.xyz</a>
       <span> · </span>
-      <span data-i18n="footerContact">Contact: phonecardcgccard</span>
+      <span>Contact: phonecardcgccard</span>
     </div>
   </footer>
   <script>
-    // 页脚年份可自动
-    // document.getElementById('year').textContent = new Date().getFullYear();
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Prompt copy functionality
+    function copyPrompt(btn){
+      var text = btn.parentElement.querySelector('.prompt-text').innerText;
+      navigator.clipboard.writeText(text);
+      btn.innerText = 'Copied!';
+      setTimeout(function(){btn.innerText='Copy';},1200);
+    }
   </script>
   <script src="assets/js/i18n.js"></script>
   <script src="assets/js/main.js"></script>
