@@ -27,7 +27,7 @@
       filter: blur(0.5px) saturate(1.08);
     }
     .brand-glass, .generator-glass {
-      max-width: 640px;
+      max-width: 700px;
       margin: 0 auto;
       background: rgba(255,255,255,0.52);
       backdrop-filter: blur(15px);
@@ -85,19 +85,19 @@
       justify-content: center;
       align-items: flex-start;
     }
-    /* 让输入框为多行textarea并且更高 */
+    /* 多行输入textarea，足够高 */
     #prompt-input {
       width: 70%;
       min-width: 140px;
-      max-width: 400px;
-      min-height: 2.8em;
-      height: 3.4em;
-      padding: 0.78rem 0.8rem;
+      max-width: 450px;
+      min-height: 3.5em;
+      height: 3.7em;
+      padding: 0.94rem 0.8rem;
       border-radius: 18px;
       border: 1px solid #d0d7e2;
       font-size: 1.11rem;
       resize: vertical;
-      line-height: 1.5;
+      line-height: 1.6;
       box-sizing: border-box;
     }
     .btn {
@@ -113,7 +113,7 @@
       box-shadow: 0 2px 12px #a5b4fc44;
       cursor: pointer;
       margin-top: 0.07em;
-      height: 3.4em;
+      height: 3.7em;
       display: flex;
       align-items: center;
     }
@@ -132,7 +132,7 @@
     }
     /* 图片等比例缩放，最大宽度与卡片相同，居中 */
     #result-image {
-      max-width: 600px;
+      max-width: 700px;
       width: 100%;
       height: auto;
       border-radius: 18px;
@@ -159,12 +159,18 @@
       color:#888;
       margin-top:0.8rem;
     }
+    @media (max-width: 800px) {
+      .brand-glass, .generator-glass, #result-image { max-width: 99vw; }
+      .gallery-grid, .prompts-list { max-width: 99vw; }
+      .generator-glass form { max-width: 98vw; }
+    }
     @media (max-width: 700px) {
-      .brand-glass, .generator-glass { max-width: 99vw; padding: 1.1rem 0.2rem; }
+      .brand-glass, .generator-glass { padding: 1.1rem 0.2rem; }
       .generator-glass h2 { font-size: 1.22rem; }
       .hero-bg { height: 400px; }
       #result-image { width: 99vw; max-width: 99vw; }
       #prompt-input { max-width: 99vw; }
+      .gallery-grid, .prompts-list { max-width: 99vw; }
     }
     /* Gallery九宫格 */
     #gallery {
@@ -180,14 +186,14 @@
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1.3rem;
-      max-width: 950px;
+      gap: 1.5rem;
+      max-width: 700px;
       margin: 0 auto;
-      padding: 0 1rem;
+      padding: 0;
     }
     .gallery-grid img {
       width: 100%;
-      height: 155px;
+      height: 200px;
       object-fit: cover;
       border-radius: 15px;
       box-shadow: 0 4px 24px 0 #a8b9d055;
@@ -201,13 +207,13 @@
     }
     @media (max-width: 700px) {
       .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-      .gallery-grid img { height: 94px; }
+      .gallery-grid img { height: 110px; }
     }
     @media (max-width: 400px) {
       .gallery-grid { grid-template-columns: 1fr; }
       .gallery-grid img { height: 70px; }
     }
-    /* Prompt两列排列 */
+    /* Prompt两列排列，宽度同gallery */
     #prompts {
       margin: 3.5rem 0 2.5rem 0;
     }
@@ -221,10 +227,10 @@
     .prompts-list {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1.1rem 2.2rem;
-      max-width: 740px;
+      gap: 1.1rem 1.5rem;
+      max-width: 700px;
       margin: 0 auto;
-      padding: 0 1rem;
+      padding: 0;
     }
     @media (max-width: 700px) {
       .prompts-list { grid-template-columns: 1fr; gap: 0.7rem; }
@@ -265,17 +271,18 @@
     /* FAQ块 */
     .faq-section {
       margin: 3.5rem auto 2.5rem auto;
-      max-width: 680px;
-      background: rgba(255,255,255,0.67);
+      max-width: 700px;
+      background: rgba(30,40,70,0.76);
       border-radius: 18px;
-      box-shadow: 0 2px 10px #b4cbe922;
+      box-shadow: 0 2px 14px #1c2a4533;
       padding: 2rem 1.4rem;
       font-size: 1.08rem;
+      color: #fff;
     }
     .faq-section h2 {
       text-align: center;
       margin-bottom: 1.1rem;
-      color: #3b546f;
+      color: #c6d6fd;
       font-size: 1.22rem;
     }
     .faq-list {
@@ -288,7 +295,7 @@
       line-height: 1.65;
     }
     .faq-list li strong {
-      color: #5c8df6;
+      color: #7db2ff;
     }
     /* 页脚黑色背景 */
     footer {
