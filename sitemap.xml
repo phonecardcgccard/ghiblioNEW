@@ -3,32 +3,50 @@
   <!-- 首页 -->
   <url>
     <loc>https://ghiblio.xyz/</loc>
-    <lastmod>2025-05-10</lastmod>
+    <lastmod>2025-05-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-  <!-- Gallery页面 -->
+  
+  <!-- Gallery 页面 -->
   <url>
     <loc>https://ghiblio.xyz/gallery</loc>
-    <lastmod>2025-05-10</lastmod>
+    <lastmod>2025-05-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  <!-- Prompts页面 -->
+  
+  <!-- Prompts 页面 -->
   <url>
     <loc>https://ghiblio.xyz/prompts</loc>
-    <lastmod>2025-05-10</lastmod>
+    <lastmod>2025-05-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  <!-- 可继续补充其它页面 -->
-  <!--
+  
+  <!-- FAQ 页面 -->
   <url>
     <loc>https://ghiblio.xyz/faq</loc>
-    <lastmod>2025-05-10</lastmod>
+    <lastmod>2025-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-  -->
+  
+  <!-- 联系我们页面 -->
+  <url>
+    <loc>https://ghiblio.xyz/contact</loc>
+    <lastmod>2025-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <!-- About 页面 -->
+  <url>
+    <loc>https://ghiblio.xyz/about</loc>
+    <lastmod>2025-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
 </urlset>
+
 
