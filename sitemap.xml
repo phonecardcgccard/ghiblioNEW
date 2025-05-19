@@ -1,52 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- 首页 -->
   <url>
     <loc>https://ghiblio.xyz/</loc>
-    <lastmod>2025-05-13</lastmod>
+    <lastmod>2025-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-  
-  <!-- Gallery 页面 -->
-  <url>
-    <loc>https://ghiblio.xyz/gallery</loc>
-    <lastmod>2025-05-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <!-- Prompts 页面 -->
-  <url>
-    <loc>https://ghiblio.xyz/prompts</loc>
-    <lastmod>2025-05-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <!-- FAQ 页面 -->
-  <url>
-    <loc>https://ghiblio.xyz/faq</loc>
-    <lastmod>2025-05-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <!-- 联系我们页面 -->
-  <url>
-    <loc>https://ghiblio.xyz/contact</loc>
-    <lastmod>2025-05-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <!-- About 页面 -->
-  <url>
-    <loc>https://ghiblio.xyz/about</loc>
-    <lastmod>2025-05-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
 </urlset>
+
 
 
